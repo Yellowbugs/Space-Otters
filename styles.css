@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
+html {
+  block-size: 100%;
+  inline-size: 100%;
+  scroll-behavior: smooth;
+}
+
+header {
+  margin-top: 150px;
+  color: white;
+  font-size: 100px;
+  font-family: cursive;
+  text-align: center;
+  
+}
+
+body {
+  background:radial-gradient(
+    hsl(234, 100%, 32%),
+   hsl(273, 98%, 25%)
+   
+  ) fixed;
+  
+    box-sizing: border-box;
+    display: grid;
+    font-family: cursive;
+    font-size: min(200%, 5vmin);
+    margin: 0;
+  }
+
+
+
+.purplebox{
+  width: 800px;
+  height: 400px;
+  fill:white;
+  border: 15px solid gray;
+  padding: 50px;
+  margin-top: 70px;
+  margin-left: 10%;
+  border-radius: 50px / 50px;
+  background: rgb(117, 117, 255);
+  text-align: center;
+}
+
+.topnav{
+  background-color: rgb(59, 59, 163);
+  height: 60px;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top:0;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  font-family: cursive;
+  text-align: center;  
+  height: 100px;
+  width: 250px;
+  text-decoration: none;
+  font-size: 40px;
+  border-right: 1px solid white;
+}
+
+.topnav a:first-child{
+  margin-left: 100px;
+}
+
+.topnav a.active {
+  background-color: rgb(117, 117, 255);
+  color: white;
+}
+.topnav a:hover:not(.active) {
+  background-color: rgb(117, 117, 255);;
+}
+
+#nftPics {
+  border-radius: 50px / 50px;
+  margin-left: 1200px;
+  margin-top: -525px;
+}
+
+button {
+  font-size: 50px;
+  background: #3498db;
+  color: #fff;
+  border: 0.25rem solid #3498db;
+  font-family: cursive;
+  margin: 1rem;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+button:hover {
+  color: #3498db;
+}
+button::after {
+  content: "";
+  background: #ecf0f1;
+  position: absolute;
+  z-index: -1;
+
+  display: block;
+}
+button[class^="grow"]::after {
+  transition: all 0.3s ease;
+}
+button[class^="grow"]:hover::after {
+  transition: all 0.3s ease-out;
+}
+button.grow_box::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: scale(0, 0);
+}
+button.grow_box:hover::after {
+  transform: scale(1, 1);
+}
+#mintButton {
+  margin-top: 250px;
+  height: 100px;
+  width: 200px;
+}
