@@ -19,11 +19,11 @@ function displayNextImage() {
     document.getElementById("nftPics").src = images[x];
 }
 var images = [], x = -1;
-          images[0] = "pink.png";
-          images[1] = "orange.png";
-          images[2] = "purple.png";
-          images[3] = "yellow.png";
-          images[4] = "green.png";
+          images[0] = "Images/pink.png";
+          images[1] = "Images/orange.png";
+          images[2] = "Images/purple.png";
+          images[3] = "Images/yellow.png";
+          images[4] = "Images/green.png";
 
 function startTimer() {
     setInterval(displayNextImage, 500);
@@ -32,5 +32,11 @@ function startTimer() {
 
 
 function mintClicked (){
+    if (typeof web3 === 'undefined'){
+        console.log("not installed")
+    }
+    else{
     alert("hello");
+    }
+
 }
