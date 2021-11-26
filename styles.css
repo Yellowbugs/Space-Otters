@@ -7,102 +7,137 @@ html {
 }
 
 header {
-  margin-top: 150px;
+  margin-top: 0px;
   color: white;
   font-size: 100px;
   font-family: cursive;
   text-align: center;
+  margin-bottom: 50px;
   
 }
 
 body {
-  background:radial-gradient(
-    hsl(234, 100%, 32%),
-   hsl(273, 98%, 25%)
-   
-  ) fixed;
   
-    box-sizing: border-box;
-    display: grid;
+  background-image: url("Space for Crash.png");
     font-family: cursive;
     font-size: min(200%, 5vmin);
     margin: 0;
   }
-
+  .topnav{
+    background:radial-gradient( hsl(273, 98%, 25%),hsl(0, 0%, 0%)) fixed;
+    height: 100px;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top:0;
+  
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    font-family: cursive;
+    text-align: center;
+    margin-top: 50px;
+    height: 100%;
+    width: 250px;
+    text-decoration: none;
+    font-size: 20px;
+  
+  }
+  
+  .topnav a:first-child{
+    margin-left: 100px;
+  }
+  
+  .topnav a:last-child{
+    border-right: 0;
+    float: right;
+    margin-right:100px;
+  
+  }
+  .topnav a.active {
+    color: rgba(255, 255, 255, 0.452);
+  }
+  .topnav a:hover:not(.active) {
+    color: rgba(255, 255, 255, 0.452);
+  }
 
 
 .purplebox{
-  width: 800px;
-  height: 400px;
-  fill:white;
-  border: 15px solid gray;
-  padding: 50px;
-  margin-top: 70px;
-  margin-left: 10%;
   border-radius: 50px / 50px;
-  background: rgb(117, 117, 255);
-  text-align: center;
-}
-
-.topnav{
-  background-color: rgb(59, 59, 163);
-  height: 60px;
+  background:radial-gradient( hsl(273, 98%, 25%),hsl(0, 0%, 0%)) fixed;
+  color:#858585;
+  margin-bottom: 50px;
   overflow: hidden;
-  position: fixed;
-  width: 100%;
-  top:0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  font-family: cursive;
-  text-align: center;  
-  height: 100px;
-  width: 250px;
-  text-decoration: none;
-  font-size: 40px;
-  border-right: 1px solid white;
+#mainInfo{
+  margin-top: 150px;
+  width: 75%;
+  height: 650px;
+  border: 15px;
+  padding: 50px;
+  margin-left: 10%;
+
 }
 
-.topnav a:first-child{
-  margin-left: 100px;
-}
-
-.topnav a.active {
-  background-color: rgb(117, 117, 255);
+#Roadmap{
+ 
+  width: 50%;
+  padding: 50px;
+  text-align: center;
   color: white;
+  height: 1500px;
 }
-.topnav a:hover:not(.active) {
-  background-color: rgb(117, 117, 255);;
+.vl {
+  border-left: 6px solid green;
 }
+
+
+
+
+
 
 #nftPics {
+  display: block;
+  height: 325px;
+  width: 325px;
   border-radius: 50px / 50px;
-  margin-left: 1200px;
-  margin-top: -525px;
+  float: right;
+  margin-right: 100px;
+  margin-top: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  
+  
 }
+
+
 
 button {
   font-size: 50px;
-  background: #3498db;
-  color: #fff;
-  border: 0.25rem solid #3498db;
+  border-radius: 50px/50px;
+  background: black;
+  color: rgb(255, 255, 255);
+  border: 0.25rem solid #3f3f3f;
   font-family: cursive;
-  margin: 1rem;
   position: relative;
-  z-index: 1;
   overflow: hidden;
 }
+
 button:hover {
-  color: #3498db;
+  color: white;
+  cursor: pointer;
 }
 button::after {
   content: "";
-  background: #ecf0f1;
+  background-color: #858585;
   position: absolute;
   z-index: -1;
-
   display: block;
 }
 button[class^="grow"]::after {
@@ -121,8 +156,240 @@ button.grow_box::after {
 button.grow_box:hover::after {
   transform: scale(1, 1);
 }
+
+#connectWallet{
+  margin-top: 30px;
+  margin-left: 30%;
+  height: 60px;
+  width: 250px;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  
+}
 #mintButton {
-  margin-top: 250px;
+  position: absolute;
+  margin-top: 20px;
   height: 100px;
   width: 200px;
+  margin-left: 100px;
+
+}
+
+
+
+.launchText {
+  font-size: 1em;
+  float: left;
+  margin-left: -30px;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+li span {
+  display: block;
+  font-size: 1em;
+  background: black;
+  color: white;
+  border-radius: 50px;
+}
+
+.ctrl {
+float: right;
+position: relative;
+margin-top: 150px;
+  flex: 0 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50px;
+  border: 0.25rem solid #3f3f3f;
+  overflow: hidden;
+  font-size: 30px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.ctrl__counter {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  
+}
+
+.ctrl__counter.is-input .ctrl__counter-num {
+  opacity: 0;
+  -webkit-transition: opacity 100ms ease-in;
+  transition: opacity 100ms ease-in;
+}
+
+.ctrl__counter.is-input .ctrl__counter-input {
+  opacity: 1;
+  -webkit-transition: opacity 100ms ease-in;
+  transition: opacity 100ms ease-in;
+}
+
+.ctrl__counter-input {
+  user-select: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  color: #333C48;
+  font-size: 30px;
+  line-height: 100px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: opacity 100ms ease-in;
+  transition: opacity 100ms ease-in;
+}
+
+.ctrl__counter-num {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 100px;
+  user-select: none;
+  opacity: 1;
+  -webkit-transition: opacity 100ms ease-in;
+  transition: opacity 100ms ease-in;
+}
+
+.ctrl__counter-num.is-increment-hide {
+  opacity: 0;
+  -webkit-transform: translateY(-50px);
+  transform: translateY(-50px);
+  -webkit-animation: increment-prev 100ms ease-in;
+  animation: increment-prev 100ms ease-in;
+}
+
+.ctrl__counter-num.is-increment-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-animation: increment-next 100ms ease-out;
+  animation: increment-next 100ms ease-out;
+}
+
+.ctrl__counter-num.is-decrement-hide {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-animation: decrement-prev 100ms ease-in;
+  animation: decrement-prev 100ms ease-in;
+}
+
+.ctrl__counter-num.is-decrement-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-animation: decrement-next 100ms ease-out;
+  animation: decrement-next 100ms ease-out;
+}
+
+.ctrl__button {
+  user-select: none;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  background-color: #000000;
+  -webkit-transition: background-color 100ms ease-in;
+  transition: background-color 100ms ease-in;
+  
+}
+
+.ctrl__button:hover {
+  background-color: #858585;
+  -webkit-transition: background-color 100ms ease-in;
+  transition: background-color 100ms ease-in;
+}
+
+.ctrl__button:active {
+  background-color: #000000;
+  -webkit-transition: background-color 100ms ease-in;
+  transition: background-color 100ms ease-in;
+}
+
+.ctrl__button--decrement { border-radius: 5px 0 0 5px; }
+
+.ctrl__button--increment { border-radius: 0 5px 5px 0; }
+ @-webkit-keyframes 
+decrement-prev {  from {
+ opacity: 1;
+ -webkit-transform: translateY(0);
+ transform: translateY(0);
+}
+}
+ @keyframes 
+decrement-prev {  from {
+ opacity: 1;
+ -webkit-transform: translateY(0);
+ transform: translateY(0);
+}
+}
+@-webkit-keyframes 
+decrement-next {  from {
+ opacity: 0;
+ -webkit-transform: translateY(-50px);
+ transform: translateY(-50px);
+}
+}
+@keyframes 
+decrement-next {  from {
+ opacity: 0;
+ -webkit-transform: translateY(-50px);
+ transform: translateY(-50px);
+}
+}
+@-webkit-keyframes 
+increment-prev {  from {
+ opacity: 1;
+ -webkit-transform: translateY(0);
+ transform: translateY(0);
+}
+}
+@keyframes 
+increment-prev {  from {
+ opacity: 1;
+ -webkit-transform: translateY(0);
+ transform: translateY(0);
+}
+}
+@-webkit-keyframes 
+increment-next {  from {
+ opacity: 0;
+ -webkit-transform: translateY(50px);
+ transform: translateY(50px);
+}
+}
+@keyframes 
+increment-next {  from {
+ opacity: 0;
+ -webkit-transform: translateY(50px);
+ transform: translateY(50px);
+}
 }
