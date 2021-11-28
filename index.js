@@ -8,20 +8,56 @@ images[5] = "Images/83.png";
 
 
   
-returnHome = function(){
-
-    var url = document.URL, 
-        index = url.indexOf("#"),
-        hash = index != -1 ? url.substring(index+1) : "";
-        console.log(hash);
-
-    if(hash != ""){
-        location.hash = "#Home";
-        window.scrollTo(0,0);
-        
+function returnHome(){
+    document.documentElement.scrollTop = 0;
     }
+function goToRoadmap(){
+    document.documentElement.scrollTop = 800;
+    }
+function goToFAQ(){
+    document.documentElement.scrollTop = 2500;
+    }
+function showAnswer(id){
+    var answer = document.getElementById(id+"answer");
+    answer.classList.toggle('hidden');
+    
 }
 
+window.addEventListener('scroll',reveal);
+window.addEventListener('scroll',timeline);
+function reveal(){
+    var reveal = document.querySelectorAll('.purplebox');
+
+    for (var i=0; i<reveal.length;i++){
+        var windowheight = window.innerHeight;
+        var revealtop = reveal[i].getBoundingClientRect().top;
+        var revealpoint = 150;
+
+        if(revealtop < windowheight -revealpoint){
+            reveal[i].classList.add('active');
+        }
+        else{
+            reveal[i].classList.remove('active');
+        }
+    }
+
+}
+function timeline(){
+    var reveal = document.querySelectorAll('.RoadmapListItem');
+
+    for (var i=0; i<reveal.length;i++){
+        var windowheight = window.innerHeight;
+        var revealtop = reveal[i].getBoundingClientRect().top;
+        var revealpoint = 150;
+
+        if(revealtop < windowheight -revealpoint){
+            reveal[i].classList.add('active');
+        }
+        else{
+            reveal[i].classList.remove('active');
+        }
+    }
+}
 function displayNextImage() {
     x = (x === images.length - 1) ? 0 : x + 1;
     document.getElementById("nftPics").src = images[x];

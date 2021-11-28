@@ -5,27 +5,25 @@
   <link rel="stylesheet" href="styles.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type = "text/javascript" src = "./index.js"></script>
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="format-detection" content="telephone=no">
+  <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
   <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 
 </head>
 <body onload = "startTimer();">
-  <script>returnHome();</script>
 
   <div class = "topnav">
-    <a href = "#Home">Home</a>
-    <a href = "#Roadmap">Roadmap</a>
-    <a href="game.html">Crash Game</a>
-    <button id = "connectWallet" class = "grow_box" onclick="connectWallet()">Connect Wallet</button>
+    <a onclick="returnHome()"><img src="Images/Logo.png" width="100px"></a>
+    <a onclick="returnHome()">Home</a>
+    <a onclick="goToRoadmap()">Roadmap</a>
+    <a onclick="goToFAQ()">FAQ</a>
+    <a><button id = "connectWallet" class = "grow_box" onclick="connectWallet()">Connect Wallet</button></a>
   </div>
 
 
   
 
-<article id = "mainInfo" class="purplebox">
-  <header>
+<article id = "mainInfo" class="purplebox active" >
+  <header style="font-family: Bangers;">
     Space Otters
   </header>
   
@@ -152,19 +150,34 @@
 </article>
 
 
-<article id = "Roadmap" href = "#Roadmap" class="purplebox">
+<article id = "Roadmap"  class="purplebox">
   <h1>Roadmap</h1>
-  <div class="vl"></div>
+  <a style="color: #858585; font-size: 20px;">We are focused on devloping the Space otter community in order to stay for the long haul :)</a>
+  <div class="vl">
+  <div class="roadmapKey"></div>
   <ul class ="RoadmapList">
-    <li class ="RoadmapList1">
+    <li class ="RoadmapListItem active">
+      0%- Launch of website, discord, twitter<br>
+      Minting will start on December 22
+    </li>
+    <li class ="RoadmapListItem">
       Test
     </li>
-
-
+    <li class ="RoadmapListItem">
+      Test
+    </li>
   </ul>
+  </div>
 
+</article>
 
-
+<article id = "FAQ" class= 'purplebox'>
+  <header>FAQ</header>
+  <div class ="FAQlist">
+  <p class="FAQs" id = "1" onclick="showAnswer(id)">
+    When does Space Otters Launch?<br><br><a class = "hidden" id = "1answer" style="font-size: 30px;">Minting will begin on December 22nd, 2021</a>
+  </p>
+</div>
 </article>
 
 
