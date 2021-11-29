@@ -7,6 +7,9 @@ images[4] = "Images/72.png";
 images[5] = "Images/83.png";
 
 
+let questions = ["When does Space Otters Launch?", "How much will a Space Otter cost to mint?"];
+let answers = ["Minting will begin on December 22nd, 2021","0.03 ETH + gas fees"];
+var hidden = true;
   
 function returnHome(){
     document.documentElement.scrollTop = 0;
@@ -18,9 +21,17 @@ function goToFAQ(){
     document.documentElement.scrollTop = 2500;
     }
 function showAnswer(id){
-    var answer = document.getElementById(id+"answer");
-    answer.classList.toggle('hidden');
-    
+    var answer = answers[id-1];
+    var question = questions[id-1];
+    var holder = document.getElementById(id);
+    if(hidden){
+        holder.innerHTML = question + '<br>' + answer;
+        hidden = false;
+    }
+    else{
+        holder.innerHTML =  question ;
+        hidden = true;
+    }
 }
 
 window.addEventListener('scroll',reveal);
@@ -36,9 +47,7 @@ function reveal(){
         if(revealtop < windowheight -revealpoint){
             reveal[i].classList.add('active');
         }
-        else{
-            reveal[i].classList.remove('active');
-        }
+        
     }
 
 }
@@ -66,8 +75,13 @@ function displayNextImage() {
 
 function startTimer() {
     setInterval(displayNextImage, 500);
+    for(let i = 1; i< 10; i ++){
+        document.getElementById(i).innerHTML =  questions[i-1];
+    }
   }
-  
+function discord(){
+    window.open("https://discord.com/invite/GM4yBWC"),'_blank';
+}
 
 //ETH FUNCTIONS START HERE
 var account = null;
