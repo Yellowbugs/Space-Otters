@@ -14,6 +14,7 @@ header {
   font-family: Bangers;
     text-align: center;
   margin-bottom: 50px;
+  letter-spacing: 10px;
   
 }
 
@@ -25,6 +26,7 @@ body {
     font-family: Bangers;
         font-size: min(200%, 5vmin);
     margin: 0;
+    
   }
   .topnav{
     background:radial-gradient( hsl(273, 98%, 25%),hsl(0, 0%, 0%)) fixed;
@@ -114,7 +116,7 @@ body {
 
 .RoadmapListItem{
   opacity: 0;
-  transition: all 5s ease;
+  transition: all 2s; 
   margin-bottom: 250px;
   margin-left: 8%;
   list-style-image: url('Images/LogoSmall.png');
@@ -216,8 +218,32 @@ button.grow_box:hover::after {
   margin-top: 20px;
   height: 100px;
   width: 200px;
+  float: right;
   margin-left: 21%;
 
+}
+.mintCountText{
+  float: left;
+  position: inherit; 
+  font-size: 50px;
+  margin-left: 0%;
+  margin-top: 10%;
+  opacity: 1;
+  color: #858585;
+  
+}
+h1.mintCountText{
+  float: left;
+  position: static; 
+  font-size: 50px;
+  opacity: 1;
+  color:white;
+  letter-spacing: 3px;
+  margin-top: 10.69%;
+} 
+
+#mintCountText .hidden{
+  opacity: 0;
 }
 
 
@@ -280,6 +306,13 @@ li span {
 border: none; 
 
 }
+#links.linkTopNav{
+  float: right;
+  margin-right: -45%;
+  margin-top: -12.5%;
+ 
+ 
+ }
 
 .ctrl {
 float: right;

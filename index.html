@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link  rel="icon" href="Images/LogoSmall.png">
   <title>Space Otters</title>
   <link rel="stylesheet" href="styles.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -9,13 +10,14 @@
   <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 
 </head>
-<body onload = "startTimer();">
+<body onload = "onStart();">
 
   <div class = "topnav">
     <a onclick="returnHome()"><img src="Images/Logo.png" width="100px"></a>
     <a onclick="returnHome()">Home</a>
     <a onclick="goToRoadmap()">Roadmap</a>
     <a onclick="goToFAQ()">FAQ</a>
+    <a><img id = "links" onclick="discord()" class="linkTopNav"src="Images/discord.png" alt="discord"></a>
     <a><button id = "connectWallet" class = "grow_box" onclick="connectWallet()">Connect Wallet</button></a>
   </div>
 
@@ -145,8 +147,11 @@
   </script>
   
   <img id = "nftPics"  alt ="Loading..." width="512px">
-
-
+  <br>
+  <h1 class = "mintCountText"><div id = "mintCountshow" class = "hidden">
+  Minted:</h1>
+  <a class = "mintCountText" id = "mintCount"></a></div>
+  
 </article>
 
 

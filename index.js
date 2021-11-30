@@ -73,11 +73,23 @@ function displayNextImage() {
     
 }
 
-function startTimer() {
+async function onStart() {
     setInterval(displayNextImage, 500);
-    for(let i = 1; i< 10; i ++){
+    for(let i = 1; i<= questions.length; i ++){
         document.getElementById(i).innerHTML =  questions[i-1];
     }
+    await window.web3.currentProvider.enable();
+    web3 = new Web3(window.web3.currentProvider);
+    contract = new web3.eth.Contract(ABI, ADDRESS);
+    await window.ethereum.send('eth_requestAccounts');
+    var accounts = await web3.eth.getAccounts();
+    account = accounts[0];
+    document.getElementById('connectWallet').innerText = "Wallet Connected";
+    console.log(account);
+    totalSupply = await contract.methods.totalSupply().call();
+    document.getElementById("mintCount").innerText = "ㅤ" + totalSupply + " out of 10,000";
+    document.getElementById("mintCountshow").classList.remove("hidden");
+    console.log(totalSupply);
   }
 function discord(){
     window.open("https://discord.com/invite/GM4yBWC"),'_blank';
@@ -893,6 +905,7 @@ async function connectWallet(){
     account = accounts[0];
     document.getElementById('connectWallet').innerText = "Wallet Connected";
     console.log(account);
+    
 }
 
 
@@ -936,6 +949,7 @@ async function mintClicked(){
             if (mintCount >= 21){
                 mintCount = 20;
             }
+          
             cost = mintCount*10000000000000000;
             contract.methods.mint(mintCount).send({from: account, value: cost})
         
