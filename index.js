@@ -1,3 +1,4 @@
+
 var images = [], x = -1;
 images[0] = "Images/1.png";
 images[1] = "Images/25.png";
@@ -72,7 +73,14 @@ function displayNextImage() {
     document.getElementById("nftPics").src = images[x];
     
 }
-
+async function createFile (text) {
+    const node = await Ipfs.create();
+    const { path } = await node.add(text);
+  
+    await node.stop();
+  
+    return path;
+  }
 async function onStart() {
     setInterval(displayNextImage, 500);
     for(let i = 1; i<= questions.length; i ++){
@@ -89,10 +97,34 @@ async function onStart() {
     totalSupply = await contract.methods.totalSupply().call();
     document.getElementById("mintCount").innerText = "ㅤ" + totalSupply + " out of 10,000";
     document.getElementById("mintCountshow").classList.remove("hidden");
-    console.log(totalSupply);
-  }
+
+    var OttersOwned = await contract.methods.walletOfOwner(account).call();
+    let tokenURIs = [];
+    let coinAmounts = [];
+
+    for(let i = 0; i<OttersOwned.length;i++){
+        var individualTokenURI = await contract.methods.tokenURI(OttersOwned[i]).call();
+        tokenURIs.push("https://gateway.pinata.cloud/ipfs/" + individualTokenURI.substring(7));
+    }
+    console.log(tokenURIs);
+    
+    for(let i = 0; i<OttersOwned.length;i++){
+        $.get( tokenURIs[i], function( data ) {
+            coinAmounts[i] = data['properties']["coin-amount"];
+      });
+    }
+    console.log(coinAmounts);
+
+    await contract.methods.updateCoinAmount(100, 1).send({from: account});
+    let coin = await contract.methods.getTokenDetails(1).call();
+    console.log(coin.coinAmount);
+  
+}
 function discord(){
     window.open("https://discord.com/invite/GM4yBWC"),'_blank';
+}
+function crash(){
+    window.open("crash/CrashGame/crash.html", "_blank");
 }
 
 //ETH FUNCTIONS START HERE
@@ -315,6 +347,32 @@ var account = null;
         {
             "inputs": [
                 {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getTokenDetails",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "uint256",
+                            "name": "coinAmount",
+                            "type": "uint256"
+                        }
+                    ],
+                    "internalType": "struct SpaceOtters.Coin",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
                     "internalType": "address",
                     "name": "owner",
                     "type": "address"
@@ -383,6 +441,11 @@ var account = null;
         },
         {
             "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "coinAmount",
+                    "type": "uint256"
+                },
                 {
                     "internalType": "uint256",
                     "name": "_mintAmount",
@@ -837,6 +900,24 @@ var account = null;
         {
             "inputs": [
                 {
+                    "internalType": "uint256",
+                    "name": "num",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "updateCoinAmount",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
                     "internalType": "address",
                     "name": "_owner",
                     "type": "address"
@@ -893,7 +974,7 @@ var account = null;
             "type": "function"
         }
     ]
-    const ADDRESS = '0xFb9D7860Ce4E9A419B8AB788FE8Fe1547DAA5E79';
+    const ADDRESS = '0xC1ADfc87f8b9F5eF904AFe637D7650AcbD75B01a';
 
 async function connectWallet(){
     await window.web3.currentProvider.enable();
@@ -951,7 +1032,7 @@ async function mintClicked(){
             }
           
             cost = mintCount*10000000000000000;
-            contract.methods.mint(mintCount).send({from: account, value: cost})
+            contract.methods.mint(10000,mintCount).send({from: account, value: cost})
         
 
         }
