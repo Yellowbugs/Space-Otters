@@ -124,7 +124,7 @@ function discord(){
     window.open("https://discord.com/invite/GM4yBWC"),'_blank';
 }
 function crash(){
-    window.open("crash/CrashGame/crash.html", "_blank");
+    window.open("CrashGame/index.html", "_blank");
 }
 
 //ETH FUNCTIONS START HERE
