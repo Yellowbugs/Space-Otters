@@ -1,0 +1,3 @@
+[submodule "CrashGame"]
+	path = CrashGame
+	url = https://github.com/tobnap/CrashGame.git
