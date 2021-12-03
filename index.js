@@ -113,12 +113,7 @@ async function onStart() {
             coinAmounts[i] = data['properties']["coin-amount"];
       });
     }
-    console.log(coinAmounts);
-
-    await contract.methods.updateCoinAmount(100, 1).send({from: account});
-    let coin = await contract.methods.getTokenDetails(1).call();
-    console.log(coin.coinAmount);
-  
+    console.log(coinAmounts); 
 }
 function discord(){
     window.open("https://discord.com/invite/GM4yBWC"),'_blank';
@@ -347,32 +342,6 @@ var account = null;
         {
             "inputs": [
                 {
-                    "internalType": "uint256",
-                    "name": "tokenId",
-                    "type": "uint256"
-                }
-            ],
-            "name": "getTokenDetails",
-            "outputs": [
-                {
-                    "components": [
-                        {
-                            "internalType": "uint256",
-                            "name": "coinAmount",
-                            "type": "uint256"
-                        }
-                    ],
-                    "internalType": "struct SpaceOtters.Coin",
-                    "name": "",
-                    "type": "tuple"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
                     "internalType": "address",
                     "name": "owner",
                     "type": "address"
@@ -441,11 +410,6 @@ var account = null;
         },
         {
             "inputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "coinAmount",
-                    "type": "uint256"
-                },
                 {
                     "internalType": "uint256",
                     "name": "_mintAmount",
@@ -900,24 +864,6 @@ var account = null;
         {
             "inputs": [
                 {
-                    "internalType": "uint256",
-                    "name": "num",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "tokenId",
-                    "type": "uint256"
-                }
-            ],
-            "name": "updateCoinAmount",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
                     "internalType": "address",
                     "name": "_owner",
                     "type": "address"
@@ -974,7 +920,7 @@ var account = null;
             "type": "function"
         }
     ]
-    const ADDRESS = '0xC1ADfc87f8b9F5eF904AFe637D7650AcbD75B01a';
+    const ADDRESS = '0xE2994D7C744fCbCe3A134F370E8B11fAa32cB905';
 
 async function connectWallet(){
     await window.web3.currentProvider.enable();
@@ -1032,7 +978,7 @@ async function mintClicked(){
             }
           
             cost = mintCount*10000000000000000;
-            contract.methods.mint(10000,mintCount).send({from: account, value: cost})
+            contract.methods.mint(mintCount).send({from: account, value: cost})
         
 
         }
