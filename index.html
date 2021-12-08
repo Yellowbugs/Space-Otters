@@ -19,29 +19,32 @@
     <a onclick="goToRoadmap()">Roadmap</a>
     <a onclick="goToFAQ()">FAQ</a>
     <a onclick="crash()">Crash Game</a>
-    <a><img id = "links" onclick="discord()" class="linkTopNav"src="Images/discord.png" alt="discord"></a>
+    <a><img  onclick="discord()" class="linkTopNav"src="Images/discord.png" alt="discord"></a>
     <a><button id = "connectWallet" class = "grow_box" onclick="connectWallet()">Connect Wallet</button></a>
   </div>
 
 
-  
+  <article id ="launchBox" class="purplebox active" >
 
+  <ul>
+    <li id = 'launchText' class="launchText">Launch in:</li>
+    <li class="launchText"><span id="days"></span>days</li>
+    <li class="launchText"><span id="hours"></span>Hours</li>
+    <li class="launchText"><span id="minutes"></span>Minutes</li>
+    <li class="launchText"><span id="seconds"></span>Seconds</li>
+  </ul>
+  <script id="launch">timeTillLaunch(ADDRESS);</script>
+  </article>
 <article id = "mainInfo" class="purplebox active" >
   <header style="font-family: Bangers;">
     Space Otters
   </header>
-  
+  <img id = "nftPics"  alt ="Loading..." width="512px">
 
-    <ul>
-      <li id = 'launchText' class="launchText">Launch in:</li>
-      <li class="launchText"><span id="days"></span>days</li>
-      <li class="launchText"><span id="hours"></span>Hours</li>
-      <li class="launchText"><span id="minutes"></span>Minutes</li>
-      <li class="launchText"><span id="seconds"></span>Seconds</li>
-    </ul>
-   <script id="launch">timeTillLaunch(ADDRESS);</script>
-<div>
-<button id = "mintButton" class = "grow_box" onclick="mintClicked()">Mint</button>
+   
+  <div class = "mintCountTexth"><div id = "mintCountshow" class = "hidden">Minted:</div>
+    <div class = "mintCountText" id = "mintCount"></div>
+
 
   <div class='ctrl'>
     <div class='ctrl__button ctrl__button--decrement'>&ndash;</div>
@@ -148,12 +151,11 @@
   })();
   </script>
   
-  <img id = "nftPics"  alt ="Loading..." width="512px">
+  <button id = "mintButton" class = "grow_box" onclick="mintClicked()">Mint</button>
   <br>
-  <h1 class = "mintCountText"><div id = "mintCountshow" class = "hidden">
-  Minted:</h1>
-  <a class = "mintCountText" id = "mintCount"></a></div>
-  
+
+ 
+
 </article>
 
 
@@ -184,6 +186,8 @@
   <div class="FAQs" id = "1" onclick="showAnswer(id)">
   </div>
   <div class="FAQs" id = "2" onclick="showAnswer(id)">
+  </div>
+  <div class="FAQs" id = "3" onclick="showAnswer(id)">
   </div>
 </div>
 <br></br>

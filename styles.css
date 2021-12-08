@@ -48,7 +48,7 @@ body {
     text-align: center;
     margin-top: 50px;
     height: 100%;
-    width: 250px;
+    width: 10%;
     text-decoration: none;
     font-size: 20px;
     cursor: pointer;
@@ -61,8 +61,8 @@ body {
   }
   
   .topnav a:last-child{
-    border-right: 0;
-    float: left;
+    margin-right: 100px;
+    float: right;
     margin-top: -5px;
   
   }
@@ -88,15 +88,21 @@ body {
   transition: all 2s ease;
 }
 
+#launchBox{
+  margin-top: 140px;
+  margin-bottom: 25px;
+  background: radial-gradient( hsl(273, 98%, 25%),hsl(59, 100%, 50%)) fixed;
+}
+
 .purplebox.active{
   transform:translateY(0px);
   opacity: 1;
 }
 
 #mainInfo{
-  margin-top: 150px;
+  /*margin-top: 150px;*/
   width: 75%;
-  height: 650px;
+  height: 500px;
   border: 15px;
   padding: 50px;
   margin-left: 10%;
@@ -150,7 +156,7 @@ body {
   height: 325px;
   width: 325px;
   border-radius: 50px / 50px;
-  float: right;
+  float: left;
   margin-right: 100px;
   margin-top: 0px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -213,31 +219,27 @@ button.grow_box:hover::after {
 
 #mintButton {
   position: relative;
-  margin-top: 20px;
+  margin-right: 10px;
   height: 100px;
   width: 200px;
   float: right;
-  margin-left: 21%;
-
+  
 }
 .mintCountText{
-  float: left;
-  position: inherit; 
   font-size: 50px;
   margin-left: 0%;
-  margin-top: 10%;
   opacity: 1;
   color: #858585;
   
+  
 }
-h1.mintCountText{
-  float: left;
-  position: static; 
+.mintCountTexth{
+  display: inline;
   font-size: 50px;
   opacity: 1;
   color:white;
   letter-spacing: 3px;
-  margin-top: 10.69%;
+  
 } 
 
 #mintCountText .hidden{
@@ -253,7 +255,8 @@ h1.mintCountText{
   list-style-type: none;
   padding: 1em;
   text-align: center;
-  font-family: Bangers;  
+  font-family: Bangers;
+  color: black;  
   
 }
 
@@ -304,18 +307,19 @@ li span {
 border: none; 
 
 }
-#links.linkTopNav{
+.linkTopNav{
   float: right;
-  margin-right: 0%;
-  margin-top: -12.5%;
+  margin-left: 0;
+  margin-top: -25px;
+  width: 60px;
  
  
  }
 
 .ctrl {
 float: right;
-position: relative;
-margin-top: 150px;
+display: inline;
+
   flex: 0 0 auto;
   display: -webkit-box;
   display: -webkit-flex;

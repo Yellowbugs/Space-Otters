@@ -8,8 +8,8 @@ images[4] = "Images/72.png";
 images[5] = "Images/83.png";
 
 
-let questions = ["When does Space Otters Launch?", "How much will a Space Otter cost to mint?"];
-let answers = ["Minting will begin on December 22nd, 2021","0.03 ETH + gas fees"];
+let questions = ["When does Space Otters Launch?", "How much will a Space Otter cost to mint?","Why should I own a Space Otter?"];
+let answers = ["Minting will begin on December 22nd, 2021","0.03 ETH + gas fees", "Exclusive access to ETH giveaways and weekly crash competitions"];
 var hidden = true;
   
 function returnHome(){
@@ -213,7 +213,7 @@ async function onStart() {
     document.getElementById('connectWallet').innerText = "Wallet Connected";
     console.log(account);
     totalSupply = await contract.methods.totalSupply().call();
-    document.getElementById("mintCount").innerText = "ㅤ" + totalSupply + " out of 10,000";
+    document.getElementById("mintCount").innerText =  totalSupply + " out of 10,000";
     document.getElementById("mintCountshow").classList.remove("hidden");
 
     var OttersOwned = await contract.methods.walletOfOwner(account).call();
@@ -1058,7 +1058,7 @@ async function connectWallet(){
 
 function timeTillLaunch(){
     var currentDate = new Date().getTime();
-    var endDate = new Date(2021,12,22,19,0).getTime(); 
+    var endDate = 1640174400000; 
     console.log(currentDate);
     console.log(endDate);
     var x = setInterval(function() {
@@ -1074,7 +1074,7 @@ function timeTillLaunch(){
         document.getElementById("seconds").innerHTML = seconds ;
         if (d < 0) {
             clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
+            document.getElementById("demo").innerHTML = "LAUNCHED";
           }
         }, 1000);
     
