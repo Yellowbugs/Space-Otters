@@ -98,11 +98,20 @@ body {
   transform:translateY(0px);
   opacity: 1;
 }
+#collection{
+  margin-top: 150px;
+  width: 75%;
+  height: 100%;
+  border: 15px;
+  padding: 50px;
+  margin-left: 10%;
+
+}
 
 #mainInfo{
   /*margin-top: 150px;*/
   width: 75%;
-  height: 500px;
+  height: 75%;
   border: 15px;
   padding: 50px;
   margin-left: 10%;
@@ -298,7 +307,7 @@ li span {
 
 .FAQlist ::first-line{
   color: white;
-  font-size: 35px;
+  font-size: 30px;
 }
 
 #links{
