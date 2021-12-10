@@ -229,6 +229,7 @@ button.grow_box:hover::after {
 #mintButton {
   position: relative;
   margin-right: 10px;
+  margin-top: 10px;
   height: 100px;
   width: 200px;
   float: right;

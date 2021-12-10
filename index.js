@@ -78,12 +78,21 @@ async function addFile (files) {
         url: "https://api.pinata.cloud/psa",
         repo: 'file-path' + Math.random()
     })
-    
+
     for (let i = 0; i < files.length; i++) {
         const { cid } = await node.add(files[i]);
         const url = `https://gateway.pinata.cloud/ipfs/${cid._baseCache.entries().next().value[1]}`;
-        console.log(url);
+        //console.log(url);
+        node.name.publish("/ipfs/" + cid._baseCache.entries().next().value[1], {allowOffline: 'true'}).then(function (res) {
+            node.name.resolve(res);
+            console.log(res.value);
+            console.log(`https://gateway.ipfs.io/ipns/${res.name}`)
+        })
+        
     }
+    
+
+
 }
 async function updateCoins () {
     var json1 = `{
