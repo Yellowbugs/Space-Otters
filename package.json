@@ -4,11 +4,13 @@
   "description": "mynft project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Josh Clinton",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "http-server": "^14.0.0"
   }
 }
