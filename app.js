@@ -1,8 +1,11 @@
 var express = require('express')
 var app = express()
+const PORT = process.env.PORT || 3000;
 
 app.get('/*', function (req,res) {
     res.sendFile(req.url, {root: './public'});
 });
 
-app.listen(80, () => console.log('App listening at port eighty'));
+app.listen(PORT, () => {
+    console.log('Our app is running on port ${ PORT }');
+});
