@@ -260,7 +260,7 @@ function twitter(){
 }
 
 function crash(){
-    window.open("CrashGame/index.html", "_blank");
+    window.open("/public/CrashGame/index.html", "_blank");
 }
 
 //ETH FUNCTIONS START HERE
