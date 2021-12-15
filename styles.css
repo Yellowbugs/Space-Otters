@@ -20,7 +20,7 @@ header {
 
 body {
   
-  background-image: url("Images/Space for Crash.png");
+  background-image: url("Images/Space\ for\ Crash.png");
     box-sizing: border-box;
     display: grid;
     font-family: Bangers;
@@ -313,16 +313,23 @@ li span {
 
 #links{
  float: right;
- margin-right: 5%;
+ display: inline;
 border: none; 
-
+}
+.twitter{
+  margin-right: 5%;
+  margin-top:10px;
+}
+#twitterTopNav{
+  margin-top:-12px;
+}
+#discordTopNav{
+  margin-top:-33px;
 }
 .linkTopNav{
   float: right;
   margin-left: 0;
-  margin-top: -25px;
-  width: 60px;
- 
+  margin-top: -25px; 
  
  }
 

@@ -76,7 +76,10 @@ function displayNextImage() {
 async function addFile (files) {
     let node = await Ipfs.create({
         url: "https://api.pinata.cloud/psa",
-        repo: 'file-path' + Math.random()
+        repo: 'file-path' + Math.random(),
+        EXPERIMENTAL: {
+            pubsub: true, // required, enables pubsub
+          }
     })
 
     const key =  await node.key.gen('tobynapolitanoisverycute');
@@ -89,7 +92,7 @@ async function addFile (files) {
         //console.log(url);
         node.name.publish("/ipfs/" + cid._baseCache.entries().next().value[1], {key: 'tobynapolitanoisverycute',allowOffline: 'false'}).then(function (res) {
             console.log(key);
-            node.name.resolve(key);
+            node.name.resolve(res);
             console.log(res.value);
             console.log(`https://gateway.ipfs.io/ipns/${key.id}`)
         })
@@ -252,6 +255,10 @@ async function onStart() {
 function discord(){
     window.open("https://discord.com/invite/GM4yBWC"),'_blank';
 }
+function twitter(){
+    window.open("https://twitter.com/spaceotters_nft"),'_blank';
+}
+
 function crash(){
     window.open("CrashGame/index.html", "_blank");
 }
