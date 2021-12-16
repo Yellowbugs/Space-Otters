@@ -6,6 +6,8 @@ images[2] = "Images/37.png";
 images[3] = "Images/47.png";
 images[4] = "Images/72.png";
 images[5] = "Images/83.png";
+storage = window.localStorage;
+
 
 
 let questions = ["When does Space Otters Launch?", "How much will a Space Otter cost to mint?","Why should I own a Space Otter?"];
@@ -73,7 +75,7 @@ function displayNextImage() {
     document.getElementById("nftPics").src = images[x];
     
 }
-async function addFile (files) {
+/*async function addFile (files) {
     let node = await Ipfs.create({
         url: "https://api.pinata.cloud/psa",
         repo: 'file-path' + Math.random(),
@@ -215,7 +217,8 @@ async function updateCoins () {
     ]
 
     addFile(files);
-}
+}*/
+
 async function onStart() {
     setInterval(displayNextImage, 500);
     for(let i = 1; i<= questions.length; i ++){
@@ -233,11 +236,13 @@ async function onStart() {
     document.getElementById("mintCount").innerText =  totalSupply + " out of 10,000";
     document.getElementById("mintCountshow").classList.remove("hidden");
 
-    var OttersOwned = await contract.methods.walletOfOwner(account).call();
+    var OttersOwned = await getOttersOwned();
+
+   
     let tokenURIs = [];
     let coinAmounts = [];
 
-    updateCoins();
+    //updateCoins();
 
     for(let i = 0; i<OttersOwned.length;i++){
         var individualTokenURI = await contract.methods.tokenURI(OttersOwned[i]).call();
@@ -251,7 +256,23 @@ async function onStart() {
       });
     }
     console.log(coinAmounts); 
+    
+    //for(let i = 1; i<=10000;i++){
+      //  storage.setItem(i.toString(), '1000');
+    //}
+
+    for(let i = 0; i<OttersOwned.length;i++){
+        const getCoins = storage.getItem(OttersOwned[i].toString());
+        console.log(parseInt(getCoins));
+    }
 }
+
+async function getOttersOwned() {
+    let toReturn = await contract.methods.walletOfOwner(account).call();
+    console.log(toReturn);
+    return toReturn;
+}
+
 function discord(){
     window.open("https://discord.com/invite/GM4yBWC"),'_blank';
 }

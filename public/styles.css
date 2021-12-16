@@ -61,8 +61,7 @@ body {
   }
   
   .topnav a:last-child{
-    margin-right: 100px;
-    float: right;
+    margin-left: 5%;
     margin-top: -5px;
   
   }
@@ -219,8 +218,8 @@ button.grow_box:hover::after {
 #connectWallet{
   margin-top: 30px;
   height: 60px;
-  width: 250px;
-  font-size: 20px;
+  width: 100%;
+  font-size: 1.2vw;
   background-color: black;
   color: white;
   
