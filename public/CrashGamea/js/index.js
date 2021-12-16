@@ -5,9 +5,9 @@ var cashedOut = false;
 var count = 0;
 prevOtter = 1;
 window.onload = async function onload(){
-    //for(let i = 1; i<=10000;i++){
-    //   storage.setItem(i.toString(), '1000');
-    // }
+    for(let i = 1; i<=10000;i++){
+       storage.setItem(i.toString(), '1000');
+     }
     var ottersOwned = await getOtters();
     console.log(ottersOwned);
     for(i=0;i<ottersOwned.length;i++){
