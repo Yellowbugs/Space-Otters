@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+</head>
+
+<body>
+
+<canvas id="myChart" style="width:100%"></canvas>
+<script src='js/index.js'></script>
+
+<button onclick='playCrash()'>
+    Start
+</button>
+
+<button onclick='cashOut()'>
+    Cashout
+</button>
+<label >Choose Otter:</label>
+  <select name="otters" id="otters">
+      
+  </select>
+  <button onclick="otterSelected()">Choose</button>
+<ul>
+    <li id="1">coins:</li>
+   
+</ul>
+</body>
+</html>
