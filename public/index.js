@@ -1116,7 +1116,7 @@ function timeTillLaunch(){
         document.getElementById("seconds").innerHTML = seconds ;
         if (d < 0) {
             clearInterval(x);
-            document.getElementById("demo").innerHTML = "LAUNCHED";
+            document.getElementById("launchText").innerHTML = "LAUNCHED";
           }
         }, 1000);
     

@@ -2,10 +2,11 @@
 <html>
 
 <head>
-
+<script type = "text/javascript">
+ var mysql = require('mysql');
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-
 </head>
 
 <body>
@@ -29,5 +30,12 @@
     <li id="1">coins:</li>
    
 </ul>
+<form action="/api" method="POST">
+    <input name="id" placeholder="id" type="text" required />
+    <input name="coins" placeholder="coins" type="text" required />
+
+    <button type="submit">Submit</button>
+</form>
+
 </body>
 </html>

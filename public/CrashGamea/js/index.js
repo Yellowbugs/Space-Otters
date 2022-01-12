@@ -1,4 +1,5 @@
 storage = window.localStorage;
+
 var graphInterval;
 var multipler;
 var cashedOut = false;
@@ -19,8 +20,8 @@ window.onload = async function onload(){
     console.log(coins);
     document.getElementById('1').innerText = 'coins: '+coins;
 
-   
-    return coins;
+
+
 };
 
 

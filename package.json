@@ -11,6 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "http-server": "^14.0.0"
+    "favicon": "^0.0.2",
+    "http-server": "^14.0.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    
+    "node": "^17.3.0",
+    "prohairesis": "^1.2.5"
   }
 }
