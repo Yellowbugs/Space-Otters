@@ -1,34 +1,13 @@
-storage = window.localStorage;
-
 var graphInterval;
-var multipler;
+var multiplier;
 var cashedOut = false;
 var count = 0;
-prevOtter = 1;
-window.onload = async function onload(){
-    //for(let i = 1; i<=10000;i++){
-     //  storage.setItem(i.toString(), '1000');
-    // }
-    var ottersOwned = await getOtters();
-    console.log(ottersOwned);
-    for(i=0;i<ottersOwned.length;i++){
-        document.getElementById('otters').innerHTML += '<option value = "'+ottersOwned[i]+'">'+ottersOwned[i]+'</option>' 
-    }
-    var prevOtter = ottersOwned[0];
-    console.log(prevOtter.toString())
-    coins = storage.getItem(prevOtter.toString());
-    console.log(coins);
-    document.getElementById('1').innerText = 'coins: '+coins;
-
-
-
-};
-
+var coins = 10;
 
 var xValues = [];
 var yValues = [];
 generateData("x", 1, 10, 1);
-
+updateCoins();
 
 var chart = new Chart("myChart", {
   type: "line",   
@@ -65,33 +44,40 @@ function generateData(value, i1, i2, step = 1) {
 }
 
 function playCrash() {
+    $.post('/bet', { id: 1, betAmount: document.getElementById('betAmmount').value }, function() {
+        updateCoins();
+    });
+
     cashedOut = false;
     multiplier = (Math.log(100/(Math.random()*99.9+0.1))/Math.log(1.1))/0.6*1000;
 
+    clearInterval(graphInterval);
     graphInterval = setInterval(updateGraph, 100);
     setTimeout(function() {
         clearInterval(graphInterval);
         
         if(cashedOut == false) {
             coins = 0;
-            document.getElementById('1').innerText = 'coins: '+coins;
         }
 
         cashedOut = true;
     }, multiplier);
 
     count = 0;
-    multipler = 0;
+    multiplier = 0;
 }
 
 function cashOut() {
     var currentMultiplier = Math.pow(1.1, 0.6*count/10);
 
+    $.post('/cashout', { id: 1, betAmount: document.getElementById('betAmmount').value, multiplier: currentMultiplier }, function() {
+        updateCoins();
+    });
+
     if (cashedOut == false) {
         console.log(currentMultiplier);
         coins *= currentMultiplier;
         cashedOut = true;
-        document.getElementById('1').innerText = 'coins: '+coins;
     }
     console.log(coins);
 }
@@ -118,6 +104,12 @@ function updateGraph() {
     chart.update();
 
     count++;
+}
+
+function updateCoins() {
+    $.get('/getCoins', { id: 1 }, function(data) {
+        $("#coins").html(data);
+    });
 }
 
 async function getOtters(){
@@ -925,30 +917,8 @@ async function getOtters(){
     contract = new web3.eth.Contract(ABI, ADDRESS);
     await window.ethereum.send('eth_requestAccounts');
            
-
-    var accounts = await web3.eth.getAccounts();
-    account = accounts[0];
+    var account = await web3.eth.getAccounts()[0];
     console.log(account);
     var ottersOwned =  await contract.methods.walletOfOwner(account).call();
     return ottersOwned;
-  
 }
-
-function otterSelected(){
-    console.log(prevOtter);
-    storage.setItem(prevOtter.toString(), coins.toString());
-    var selection = document.getElementById("otters");
-    var currentOtter = parseInt(selection.options[selection.selectedIndex].text);
-    coins = parseFloat(storage.getItem(currentOtter.toString()));
-    document.getElementById('1').innerText = 'coins: '+coins;
-    console.log(currentOtter);
-    console.log(coins);
-    prevOtter = currentOtter;
-}
-
-
-window.onbeforeunload = function() {
-    var selection = document.getElementById("otters");
-    var currentOtter = parseInt(selection.options[selection.selectedIndex].text);
-    storage.setItem(currentOtter.toString(), coins.toString());
-  };
