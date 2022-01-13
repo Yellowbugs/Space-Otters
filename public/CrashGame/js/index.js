@@ -46,33 +46,33 @@ function generateData(value, i1, i2, step = 1) {
 }
 
 function playCrash() {
-    $.post('/bet', { id: document.getElementById('otters').value, betAmount: document.getElementById('betAmount').value }, function() {
+    $.post('/bet', { id: document.getElementById('otters').value, betAmount: document.getElementById('betAmount').value }, function(data) {
+        multiplier = data;
+        cashedOut = false;
+
         updateCoins();
-    });
 
-    cashedOut = false;
-    multiplier = (Math.log(100/(Math.random()*99.9+0.1))/Math.log(1.1))/0.6*1000;
-
-    clearInterval(graphInterval);
-    graphInterval = setInterval(updateGraph, 100);
-    setTimeout(function() {
         clearInterval(graphInterval);
-        
-        if(cashedOut == false) {
-            coins = 0;
-        }
+        graphInterval = setInterval(updateGraph, 100);
+        setTimeout(function() {
+            clearInterval(graphInterval);
+            
+            if(cashedOut == false) {
+                coins = 0;
+            }
 
-        cashedOut = true;
-    }, multiplier);
+            cashedOut = true;
+        }, multiplier);
 
-    count = 0;
-    multiplier = 0;
+        count = 0;
+        multiplier = 0;
+    });
 }
 
 function cashOut() {
     var currentMultiplier = Math.pow(1.1, 0.6*count/10);
 
-    $.post('/cashout', { betAmount: document.getElementById('betAmount').value, multiplier: currentMultiplier }, function() {
+    $.post('/cashout', { betAmount: document.getElementById('betAmount').value, currentMultiplier: currentMultiplier }, function() {
         updateCoins();
     });
 
@@ -118,7 +118,6 @@ function updateCoins() {
     }
     $.get('/getCoins', { id:  otterSelected}, function(data) {
         $("#coins").html("Coins: "+ Number(Number(data).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]));
-        
     });
 }
 

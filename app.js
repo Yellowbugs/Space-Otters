@@ -31,6 +31,7 @@ app.get('/*', function (req,res) {
 
 var betAmount = 0;
 var cashedOut = true;
+var multiplier;
 var idSelected;
 
 app.post('/bet', urlencodedParser, function (req, res) {
@@ -40,6 +41,8 @@ app.post('/bet', urlencodedParser, function (req, res) {
 		password: "8326ac7e",
 		database: "heroku_166199ff331728f"
 	});
+
+	multiplier = (Math.log(100/(Math.random()*99.9+0.1))/Math.log(1.1))/0.6*1000;
 
 	con.connect(function(err) {
 		if (err) throw err;
@@ -52,7 +55,7 @@ app.post('/bet', urlencodedParser, function (req, res) {
 					if (err) throw err;
 					con.end();
 					cashedOut = false;
-					res.sendStatus(200);
+					res.send(multiplier.toString());
 				});
 			} else {
 				con.end();
@@ -74,12 +77,14 @@ app.post('/cashout', urlencodedParser, function (req, res) {
 			if (err) throw err;
 			con.query("SELECT coins FROM coinamounts WHERE id = ?",[idSelected] , function (err, result) {
 				if (err) throw err;
-				con.query("UPDATE coinamounts SET coins = ? WHERE id = ?",[JSON.parse(JSON.stringify(result))[0].coins + betAmount * req.body.multiplier, idSelected], function (err, result) {
-					if (err) throw err;
-					con.end();
-					cashedOut = true;
-					res.sendStatus(200);
-				});
+				if (req.body.currentMultiplier < multiplier) {
+					con.query("UPDATE coinamounts SET coins = ? WHERE id = ?",[JSON.parse(JSON.stringify(result))[0].coins + betAmount * req.body.currentMultiplier, idSelected], function (err, result) {
+						if (err) throw err;
+						con.end();
+						cashedOut = true;
+						res.sendStatus(200);
+					});
+				}
 			});
 		});
 	} else {
