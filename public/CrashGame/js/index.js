@@ -7,7 +7,7 @@ var coins = 10;
 var xValues = [];
 var yValues = [];
 generateData("x", 1, 10, 1);
-updateCoins();
+getOtters();
 
 var chart = new Chart("myChart", {
   type: "line",   
@@ -32,7 +32,9 @@ var chart = new Chart("myChart", {
     },
     animation: {
         duration: 0
-    }
+    },
+    responsive:true,
+    maintainAspectRatio: false
   }
 });
 
@@ -44,7 +46,7 @@ function generateData(value, i1, i2, step = 1) {
 }
 
 function playCrash() {
-    $.post('/bet', { id: 1, betAmount: document.getElementById('betAmmount').value }, function() {
+    $.post('/bet', { id: document.getElementById('otters').value, betAmount: document.getElementById('betAmount').value }, function() {
         updateCoins();
     });
 
@@ -70,7 +72,7 @@ function playCrash() {
 function cashOut() {
     var currentMultiplier = Math.pow(1.1, 0.6*count/10);
 
-    $.post('/cashout', { id: 1, betAmount: document.getElementById('betAmmount').value, multiplier: currentMultiplier }, function() {
+    $.post('/cashout', { betAmount: document.getElementById('betAmount').value, multiplier: currentMultiplier }, function() {
         updateCoins();
     });
 
@@ -107,8 +109,16 @@ function updateGraph() {
 }
 
 function updateCoins() {
-    $.get('/getCoins', { id: 1 }, function(data) {
-        $("#coins").html(data);
+    var otterSelected;
+    if(document.getElementById('otters').value == "Choose Otter"){
+        otterSelected = 0;
+        }
+    else{
+        otterSelected = document.getElementById('otters').value
+    }
+    $.get('/getCoins', { id:  otterSelected}, function(data) {
+        $("#coins").html("Coins: "+ Number(Number(data).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]));
+        
     });
 }
 
@@ -917,8 +927,14 @@ async function getOtters(){
     contract = new web3.eth.Contract(ABI, ADDRESS);
     await window.ethereum.send('eth_requestAccounts');
            
-    var account = await web3.eth.getAccounts()[0];
+    var accounts = await web3.eth.getAccounts();
+    var account = accounts[0];
     console.log(account);
     var ottersOwned =  await contract.methods.walletOfOwner(account).call();
+    console.log(ottersOwned);
+    for(i=0;i<ottersOwned.length;i++){
+        document.getElementById('otters').innerHTML += '<option value = "'+ottersOwned[i]+'">'+ottersOwned[i]+'</option>' 
+    }
+    updateCoins();
     return ottersOwned;
 }

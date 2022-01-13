@@ -2,29 +2,30 @@
 <html>
 
 <head>
-
+<title>Crash Game</title>
+<link rel="stylesheet" href="../styles.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
 </head>
-
+<header id="crashHeader">Crash Game</header>
 <body>
-
+<article id = "graph" class="purplebox active" >
 <canvas id="myChart" style="width:100%"></canvas>
 <script src='js/index.js'></script>
-
-<button onclick='playCrash()'>
-    Start
+</article>
+<article id = "config" class="purplebox active" >
+<button onclick='playCrash()' id = "bet">
+    Bet
 </button>
 
-<button onclick='cashOut()'>
+<button onclick='cashOut()' id = "cashout">
     Cashout
 </button>
-
-<textarea id='betAmmount'></textarea>
-<select id='otters'></select>
-
-<div id='coins'></div>
-
+<textarea id='betAmount' placeholder="bet amount"></textarea>
+<select id='otters' onchange="updateCoins()"><option>Choose Otter</option></select>
+<div  id='coins'>Coins:</div>
+</article>
 </body>
 </html>

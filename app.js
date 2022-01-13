@@ -31,6 +31,7 @@ app.get('/*', function (req,res) {
 
 var betAmount = 0;
 var cashedOut = true;
+var idSelected;
 
 app.post('/bet', urlencodedParser, function (req, res) {
 	var con = mysql.createConnection({
@@ -45,8 +46,9 @@ app.post('/bet', urlencodedParser, function (req, res) {
 		con.query("SELECT coins FROM coinamounts WHERE id = ?",[req.body.id] , function (err, result) {
 			if (err) throw err;
 			betAmount = req.body.betAmount;
+			idSelected = req.body.id;
 			if (betAmount < JSON.parse(JSON.stringify(result))[0].coins && betAmount > 0) {
-				con.query("UPDATE coinamounts SET coins = ? WHERE id = ?",[JSON.parse(JSON.stringify(result))[0].coins - betAmount, req.body.id], function (err, result) {
+				con.query("UPDATE coinamounts SET coins = ? WHERE id = ?",[JSON.parse(JSON.stringify(result))[0].coins - betAmount, idSelected], function (err, result) {
 					if (err) throw err;
 					con.end();
 					cashedOut = false;
@@ -68,12 +70,11 @@ app.post('/cashout', urlencodedParser, function (req, res) {
 			password: "8326ac7e",
 			database: "heroku_166199ff331728f"
 		});
-	
 		con.connect(function(err) {
 			if (err) throw err;
-			con.query("SELECT coins FROM coinamounts WHERE id = ?",[req.body.id] , function (err, result) {
+			con.query("SELECT coins FROM coinamounts WHERE id = ?",[idSelected] , function (err, result) {
 				if (err) throw err;
-				con.query("UPDATE coinamounts SET coins = ? WHERE id = ?",[JSON.parse(JSON.stringify(result))[0].coins + betAmount * req.body.multiplier, req.body.id], function (err, result) {
+				con.query("UPDATE coinamounts SET coins = ? WHERE id = ?",[JSON.parse(JSON.stringify(result))[0].coins + betAmount * req.body.multiplier, idSelected], function (err, result) {
 					if (err) throw err;
 					con.end();
 					cashedOut = true;

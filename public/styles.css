@@ -17,6 +17,9 @@ header {
   letter-spacing: 10px;
   
 }
+#crashHeader{
+  margin-bottom: 0px;
+}
 
 body {
   
@@ -86,7 +89,20 @@ body {
   opacity: 0;
   transition: all 2s ease;
 }
-
+#graph{
+  padding: 10px;
+  margin-top: 50px;
+  width: 80%;
+  height: 500px;
+  margin-bottom: 10px;
+}
+#config{
+  width: 80%;
+  height: 200%;
+  margin-bottom: 0px;
+  background: radial-gradient( hsl(187, 98%, 25%),hsl(0, 0%, 69%)) fixed;
+  display: flex;
+}
 #launchBox{
   margin-top: 140px;
   margin-bottom: 25px;
@@ -215,6 +231,76 @@ button.grow_box:hover::after {
   transform: scale(1, 1);
 }
 
+#bet{
+  font-size: 20px;
+    left: 5%;
+    height: 100px;
+    width: 200px;
+    top: 50px;
+}
+#cashout{
+  left: 10%;
+  font-size: 20px;
+  top: 50px;
+  height: 100px;
+  width: 200px;
+}
+#betAmount {
+  position: relative;
+  outline: none;
+  resize: none;
+  padding: 0;
+  margin-left: 20%;
+  top: 62px;
+  background-color: gray;
+  color: black;
+  font-family: bangers;
+  border-radius: 10px/10px;
+  font-size: 35px;
+  height: 60px;
+  width: 200px;
+  text-align: center;
+  line-height: 60px
+}
+#betAmount::-webkit-input-placeholder {
+  color: rgb(59, 55, 55);
+}
+
+#otters{
+  position: relative;
+  outline: none;
+  resize: none;
+  padding: 0;
+  margin-left: 5%;
+  top: 62px;
+  background-color: gray;
+  color: black;
+  font-family: bangers;
+  border-radius: 10px/10px;
+  font-size: 34.8px;
+  height: 60px;
+  line-height: 60px;
+  width: 200px;
+  text-align: center;
+}
+#coins{
+  position: relative;
+  outline: none;
+  resize: none;
+  padding: 0;
+  margin-left: 5%;
+  top: 62px;
+  background-color: gray;
+  color: black;
+  font-family: bangers;
+  border-radius: 10px/10px;
+  font-size: 27px;
+  height: 60px;
+  line-height: 60px;
+  width: 200px;
+  text-align: center;
+}
+
 #connectWallet{
   margin-top: 30px;
   height: 60px;
@@ -229,8 +315,8 @@ button.grow_box:hover::after {
   position: relative;
   margin-right: 10px;
   margin-top: 10px;
-  height: 100px;
-  width: 200px;
+    height: 100px;
+    width: 200px;
   float: right;
   
 }

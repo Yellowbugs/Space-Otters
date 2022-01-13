@@ -281,7 +281,7 @@ function twitter(){
 }
 
 function crash(){
-    window.open("./CrashGamea/index.html", "_blank");
+    window.open("./CrashGame/index.html", "_blank");
 }
 
 //ETH FUNCTIONS START HERE
