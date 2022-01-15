@@ -47,7 +47,7 @@ function generateData(value, i1, i2, step = 1) {
 
 function playCrash() {
     $.post('/bet', { id: document.getElementById('otters').value, betAmount: document.getElementById('betAmount').value }, function(data) {
-        multiplier = data;
+        multiplier = (Math.log(data)/Math.log(1.1))/0.6*1000;
         cashedOut = false;
 
         updateCoins();
@@ -70,18 +70,12 @@ function playCrash() {
 }
 
 function cashOut() {
-    var currentMultiplier = Math.pow(1.1, 0.6*count/10);
+      
 
-    $.post('/cashout', { betAmount: document.getElementById('betAmount').value, currentMultiplier: currentMultiplier }, function() {
+    $.post('/cashout', { betAmount: document.getElementById('betAmount').value}, function() {
         updateCoins();
     });
 
-    if (cashedOut == false) {
-        console.log(currentMultiplier);
-        coins *= currentMultiplier;
-        cashedOut = true;
-    }
-    console.log(coins);
 }
 
 function updateGraph() {

@@ -33,6 +33,10 @@ var betAmount = 0;
 var cashedOut = true;
 var multiplier;
 var idSelected;
+var start = 0;
+var elapsed;
+var currentMultiplier;
+
 
 app.post('/bet', urlencodedParser, function (req, res) {
 	var con = mysql.createConnection({
@@ -42,7 +46,7 @@ app.post('/bet', urlencodedParser, function (req, res) {
 		database: "heroku_166199ff331728f"
 	});
 
-	multiplier = (Math.log(100/(Math.random()*99.9+0.1))/Math.log(1.1))/0.6*1000;
+	multiplier = 100/(Math.random()*99.9+0.1)
 
 	con.connect(function(err) {
 		if (err) throw err;
@@ -55,6 +59,7 @@ app.post('/bet', urlencodedParser, function (req, res) {
 					if (err) throw err;
 					con.end();
 					cashedOut = false;
+					start = new Date().getTime();
 					res.send(multiplier.toString());
 				});
 			} else {
@@ -77,8 +82,12 @@ app.post('/cashout', urlencodedParser, function (req, res) {
 			if (err) throw err;
 			con.query("SELECT coins FROM coinamounts WHERE id = ?",[idSelected] , function (err, result) {
 				if (err) throw err;
-				if (req.body.currentMultiplier < multiplier) {
-					con.query("UPDATE coinamounts SET coins = ? WHERE id = ?",[JSON.parse(JSON.stringify(result))[0].coins + betAmount * req.body.currentMultiplier, idSelected], function (err, result) {
+				elapsed = new Date().getTime() - start;
+				currentMultiplier = Math.pow(1.1, 0.6*(elapsed/1000));
+				console.log(currentMultiplier);
+				console.log(multiplier);
+				if (currentMultiplier < multiplier) {
+					con.query("UPDATE coinamounts SET coins = ? WHERE id = ?",[JSON.parse(JSON.stringify(result))[0].coins + betAmount * currentMultiplier, idSelected], function (err, result) {
 						if (err) throw err;
 						con.end();
 						cashedOut = true;
