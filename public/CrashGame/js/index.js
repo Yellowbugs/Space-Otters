@@ -75,9 +75,10 @@ function cashOut() {
     $.post('/cashout', { betAmount: document.getElementById('betAmount').value}, function() {
         updateCoins();
     });
+    
 
 }
-
+ 
 function updateGraph() {
     xValues = [];
     yValues = [];
