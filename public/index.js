@@ -20,8 +20,11 @@ function returnHome(){
 function goToRoadmap(){
     document.documentElement.scrollTop = 800;
     }
+function goToCrew(){
+     document.documentElement.scrollTop = 3300;
+     }
 function goToFAQ(){
-    document.documentElement.scrollTop = 2500;
+    document.documentElement.scrollTop = 5000;
     }
 function showAnswer(id){
     var answer = answers[id-1];
@@ -274,7 +277,7 @@ async function getOttersOwned() {
 }
 
 function discord(){
-    window.open("https://discord.com/invite/GM4yBWC"),'_blank';
+    window.open("https://discord.gg/C4YcMmxkH2"),'_blank';
 }
 function twitter(){
     window.open("https://twitter.com/spaceotters_nft"),'_blank';
@@ -1094,6 +1097,9 @@ async function connectWallet(){
     account = accounts[0];
     document.getElementById('connectWallet').innerText = "Wallet Connected";
     console.log(account);
+    totalSupply = await contract.methods.totalSupply().call();
+    document.getElementById("mintCount").innerText =  totalSupply + " out of 10,000";
+    document.getElementById("mintCountshow").classList.remove("hidden");
     
 }
 
@@ -1116,7 +1122,11 @@ function timeTillLaunch(){
         document.getElementById("seconds").innerHTML = seconds ;
         if (d < 0) {
             clearInterval(x);
-            document.getElementById("launchText").innerHTML = "LAUNCHED";
+            document.getElementById("launchText").innerHTML = "LAUNCHED!!!";
+            document.getElementById("days").innerHTML = 0;
+            document.getElementById("hours").innerHTML =  0;
+            document.getElementById("minutes").innerHTML = 0;
+            document.getElementById("seconds").innerHTML = 0;
           }
         }, 1000);
     

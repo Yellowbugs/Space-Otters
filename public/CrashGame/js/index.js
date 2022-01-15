@@ -34,8 +34,13 @@ var chart = new Chart("myChart", {
         duration: 0
     },
     responsive:true,
-    maintainAspectRatio: false
-  }
+    maintainAspectRatio: false,
+
+        
+      
+    
+  },
+  
 });
 
 function generateData(value, i1, i2, step = 1) {
@@ -75,7 +80,7 @@ function cashOut() {
     $.post('/cashout', { betAmount: document.getElementById('betAmount').value}, function() {
         updateCoins();
     });
-    
+
 
 }
  
@@ -87,11 +92,12 @@ function updateGraph() {
     chart.data.labels = xValues;
     chart.data.datasets = [{
         fill: false,
-        pointRadius: 0,
-        borderColor: "rgba(0,0,255,0.5)",
+        radius: 0,
+        borderColor: "hsl(187, 98%, 25%)",
+        borderCapStyle: "round",
         data: yValues
     }];
-
+    
     if (yValues.at(-1) < 2) {
         chart.options.scales.yAxes[0].ticks.max = 2;
     } else {
