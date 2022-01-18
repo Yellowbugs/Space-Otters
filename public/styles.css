@@ -18,7 +18,7 @@ header {
   font-size: 100px;
   font-family: Bangers;
     text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   letter-spacing: 10px;
   
 }
@@ -69,9 +69,7 @@ body {
   }
   
   .topnav a:last-child{
-    margin-top: -5px;
-    margin-left: 15%;
-  
+    margin-top: -5px;  
   }
   .topnav a.active {
     color: rgba(255, 255, 255, 0.452);
@@ -111,6 +109,7 @@ body {
 #launchBox{
   margin-top: 140px;
   margin-bottom: 25px;
+  height: 100px;
   background: radial-gradient( hsl(273, 98%, 25%),hsl(59, 100%, 50%)) fixed;
 }
 
@@ -167,12 +166,12 @@ body {
   padding: 0%;
   text-align: center;
   color: black;
-  height: 110px;
+  height: 150px;
   float: right;
   margin-bottom: 0;
   border-radius: 0;
   margin: 0%;
-  padding-top: 20px;
+  padding-top: 50px;
   background: rgb(255,203,59);
 
 }
@@ -242,8 +241,7 @@ body {
   border-radius: 0;
   margin: 0%;
   background: rgb(255,234,84);
-  line-height: 150px;
-
+  padding-top: 50px;
 }
 
 
@@ -372,7 +370,8 @@ button {
   background: black;
   color: rgb(255, 255, 255);
   border: 0.25rem solid #3f3f3f;
-  font-family: Bangers;  position: relative;
+  font-family: Bangers;  
+  position: relative;
   overflow: hidden;
   z-index: 1;
 
@@ -481,6 +480,8 @@ button.grow_box:hover::after {
 }
 
 #connectWallet{
+  float: left;
+  margin-left: 50%;
   margin-top: 30px;
   height: 60px;
   width: 100%;
@@ -520,14 +521,27 @@ button.grow_box:hover::after {
   opacity: 0;
 }
 
-
-
-.launchText {
+#launchText {
   font-size: 1em;
   float: left;
   margin-left: -30px;
   list-style-type: none;
   padding: 1em;
+  text-align: center;
+  font-family: Bangers;
+  color: black; 
+  line-height: 50px;
+  padding: 0%;
+  padding-right: 30px;
+  margin: 0%;
+}
+
+.launchText {
+  font-size: 20px;
+  float: left;
+  margin-left: 30px;
+  padding-right: 30px;
+  list-style-type: none;
   text-align: center;
   font-family: Bangers;
   color: black;  
@@ -539,11 +553,13 @@ li span {
   font-size: 35px;
   background: black;
   width: 100px;
-  height: 50px;
+  height: 40px;
   color: white;
   border-radius: 25px;
-  padding-top: 15px;
-  margin-top: -15px;
+  padding-top: 5px;
+  margin-top: -5px;
+  padding-bottom: 5px;
+  line-height: 40px;
 }
 
 #FAQ{
@@ -581,13 +597,18 @@ li span {
 border: none; 
 }
 .twitter{
-  margin-right: 5%;
   margin-top:10px;
+}
+.instagram{
+  margin-right: 5%;
 }
 #twitterTopNav{
   margin-top:-12px;
 }
 #discordTopNav{
+  margin-top:-33px;
+}
+#instagramTopNav{
   margin-top:-33px;
 }
 .linkTopNav{

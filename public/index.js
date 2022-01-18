@@ -10,8 +10,8 @@ storage = window.localStorage;
 
 
 
-let questions = ["When does Space Otters Launch?", "How much will a Space Otter cost to mint?","Why should I own a Space Otter?"];
-let answers = ["Minting will begin on December 22nd, 2021","0.03 ETH + gas fees", "Exclusive access to ETH giveaways and weekly crash competitions"];
+let questions = ["When does Space Otters Launch?", "How much will a Space Otter cost to mint?","Why should I own a Space Otter?", "What blockchain is space Otters on?", "How do I purchase a space otter?", "Is there a presale period?"];
+let answers = ["Minting will begin on March 5, 2022 at 3:00pm EST(8:00 PM UTC)","0.03 ETH + gas fees", "Exclusive access to ETH giveaways and weekly crash competitions", "ethereum","You can mint a space otter when minting begins via metamask. Make sure you are on the ethereum mainnet and have the metamask extension installed.", "Nope. Otters will be minted first come first serve on March 5th at 3:00pm EST(8:00 UTC)"];
 var hidden = true;
   
 function returnHome(){
@@ -240,34 +240,6 @@ async function onStart() {
     document.getElementById("mintCountshow").classList.remove("hidden");
 
     var OttersOwned = await getOttersOwned();
-
-   
-    let tokenURIs = [];
-    let coinAmounts = [];
-
-    //updateCoins();
-
-    for(let i = 0; i<OttersOwned.length;i++){
-        var individualTokenURI = await contract.methods.tokenURI(OttersOwned[i]).call();
-        tokenURIs.push("https://gateway.pinata.cloud/ipfs/" + individualTokenURI.substring(7));
-    }
-    console.log(tokenURIs);
-    
-    for(let i = 0; i<OttersOwned.length;i++){
-        $.get( tokenURIs[i], function( data ) {
-            coinAmounts[i] = data['properties']["coin-amount"];
-      });
-    }
-    console.log(coinAmounts); 
-    
-    //for(let i = 1; i<=10000;i++){
-      //  storage.setItem(i.toString(), '1000');
-    //}
-
-    for(let i = 0; i<OttersOwned.length;i++){
-        const getCoins = storage.getItem(OttersOwned[i].toString());
-        console.log(parseInt(getCoins));
-    }
 }
 
 async function getOttersOwned() {
@@ -282,7 +254,9 @@ function discord(){
 function twitter(){
     window.open("https://twitter.com/spaceotters_nft"),'_blank';
 }
-
+function instagram(){
+    window.open("https://www.instagram.com/spaceotters_nft/"),'_blank';
+}
 function crash(){
     window.open("./CrashGame/index.html", "_blank");
 }
@@ -1106,9 +1080,7 @@ async function connectWallet(){
 
 function timeTillLaunch(){
     var currentDate = new Date().getTime();
-    var endDate = 1640174400000; 
-    console.log(currentDate);
-    console.log(endDate);
+    var endDate = 1646510400000; 
     var x = setInterval(function() {
         var currentDate = new Date().getTime();
         var d = endDate - currentDate;
@@ -1122,11 +1094,12 @@ function timeTillLaunch(){
         document.getElementById("seconds").innerHTML = seconds ;
         if (d < 0) {
             clearInterval(x);
-            document.getElementById("launchText").innerHTML = "LAUNCHED!!!";
-            document.getElementById("days").innerHTML = 0;
-            document.getElementById("hours").innerHTML =  0;
-            document.getElementById("minutes").innerHTML = 0;
-            document.getElementById("seconds").innerHTML = 0;
+            document.getElementById("launchText").innerHTML = "LAUNCHED!!! Mint your space otters NOW!";
+            document.getElementById("launchText").style.fontSize = "100%";
+            document.getElementById("dateBoxesh").remove();
+            document.getElementById("dateBoxesd").remove();
+            document.getElementById("dateBoxesm").remove();
+            document.getElementById("dateBoxess").remove();
           }
         }, 1000);
     

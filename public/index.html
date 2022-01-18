@@ -20,8 +20,9 @@
     <a onclick="goToCrew()">Crew</a>
     <a onclick="goToFAQ()">FAQ</a>
     <a onclick="crash()">Crash Game</a>
-    <a><img  class="linkTopNav" id ="twitterTopNav" onclick="twitter()" src="Images/twitter.png" alt="twitter"></button>    </a>
-    <a><img  onclick="discord()" id = "discordTopNav" class="linkTopNav"src="Images/discord.png" alt="discord"></a>
+    <a><img  class="linkTopNav" id ="instagramTopNav" onclick="instagram()" src="Images/instagram.png" alt="instagram"></a>
+    <a><img  class="linkTopNav" id ="twitterTopNav" onclick="twitter()" src="Images/twitter.png" alt="twitter"></a>
+    <a><img  class="linkTopNav" id = "discordTopNav" onclick="discord()"  src="Images/discord.png" alt="discord"></a>
     <a><button id = "connectWallet" class = "grow_box" onclick="connectWallet()">Connect Wallet</button></a>
   </div>
 
@@ -29,11 +30,11 @@
   <article id ="launchBox" class="purplebox active" >
 
   <ul>
-    <li id = 'launchText' class="launchText">Launch in:</li>
-    <li class="launchText"><span id="days"></span>days</li>
-    <li class="launchText"><span id="hours"></span>Hours</li>
-    <li class="launchText"><span id="minutes"></span>Minutes</li>
-    <li class="launchText"><span id="seconds"></span>Seconds</li>
+    <li id = 'launchText'>Launch in:</li>
+    <li class="launchText" id = "dateBoxesd"><span id="days"></span>days</li>
+    <li class="launchText" id = "dateBoxesh"><span id="hours"></span>Hours</li>
+    <li class="launchText" id = "dateBoxesm"><span id="minutes"></span>Minutes</li>
+    <li class="launchText" id = "dateBoxess"><span id="seconds"></span>Seconds</li>
   </ul>
   <script id="launch">timeTillLaunch(ADDRESS);</script>
   </article>
@@ -41,6 +42,7 @@
   <header style="font-family: Bangers;">
     Space Otters
   </header>
+  <p style="text-align: center; color: aqua;">play and win ethereum prizes in weekly competitions!</p>
   <img id = "nftPics"  alt ="Loading..." width="512px">
 
    
@@ -166,7 +168,7 @@
   <a style="color: #858585; font-size: 20px;">We are focused on devloping the Space otter community in order to reach the stars :)</a></article>
 
     <article class="purplebox" id = "roadmapItem1"><li class ="RoadmapListItem active">
-      0%- Launch of website, Crash Game, discord, twitter<br>
+      0%- Launch of website, Crash Game, instagram, discord, twitter<br>
       Minting will start on February 22<br>
       Crash Game Weekly reward: 0.01 eth
     </li></article>
@@ -183,7 +185,7 @@
       75%- 50 Otters + 5 eth in givaways
     </li></article>
     <article class="purplebox" id = "roadmapItem6"><li class ="RoadmapListItem">
-      100%- 10 eth in giveaways + $25,000 donation to the International Otter Survival Fund(IOSF)
+      100%- 10 eth in giveaways + $25,000 donation to the International Otter Survival Fund(IOSF)<br><br>more ways to win and more projects in the future!
     </li></article>
   
   </div>
@@ -191,7 +193,7 @@
     What is the Crash Game?
     </article>
     <article id = "crashDetails" class="purplebox">
-      <article id = "crashDetailText">A space otter gives you exclusive rights to play the Crash Game. Players are givien a certain amount of Otther Coins(no real value) each week. They then can use them to play in that week's challange. First select how much you wish to wager. Then watch the rocket laucnh! As the rocket flies higher, you potential awards increase. A multiplier will be applied to your bet depending on where you cashout. For instance, if you click cashout when the rocket reachers 2.5 and you wagered 1000 Otter Coins, you will be awarded 2500 ottercoins. Sweet Right? The only catch is that the rocket will randomly crash at some point along its path. If you have yet to cash out, you will lose your initial bet and not be awarded any money. After the week has ended, eth prizes will be given out to the 5 or 10 otters with the most Otter Coins for that week.
+      <article id = "crashDetailText">A space otter gives you exclusive rights to play the Crash Game. Players are given a certain amount of Ottercoins(no real value) each week. They then can use them to play in that week's challenge. First, select how much you wish to wager. Then watch the rocket launch! As the rocket flies higher, your potential awards increase. A multiplier will be applied to your bet depending on where you cashout. For instance, if you click cashout when the rocket reachers 2.5 and you wagered 1000 Ottercoins, you will be awarded 2500 Ottercoins. Sweet Right? The only catch is that the rocket will randomly crash at some point along its path. If you have yet to cash out, you will lose your initial bet and not be awarded any money. After the week has ended, eth prizes will be given out to the 5 or 10 otters with the most Ottercoins for that week.
       </article>
       <img src= "Images/crashExample.png" id = "crashPicture">
       </article>
@@ -215,8 +217,16 @@
   </div>
   <div class="FAQs" id = "3" onclick="showAnswer(id)">
   </div>
-</div>
+  <div class="FAQs" id = "4" onclick="showAnswer(id)">
+  </div>
+  <div class="FAQs" id = "5" onclick="showAnswer(id)">
+  </div>
+  <div class="FAQs" id = "6" onclick="showAnswer(id)">
+  </div>
+</div><br>
+<div style="color:aqua">If you have more questions, please visit our discord</div>
 <br></br>
+<button id = "links" class="instagram" onclick="instagram()"><img src="Images/instagram.png" alt="instagram"></button>
 <button id = "links" class="twitter" onclick="twitter()"><img src="Images/twitter.png" alt="twitter"></button>
 <button id = "links" onclick="discord()"><img src="Images/discord.png" alt="discord"></button>
 

@@ -93,6 +93,9 @@ app.post('/cashout', urlencodedParser, function (req, res) {
 						cashedOut = true;
 						res.sendStatus(200);
 					});
+				} else{
+					con.end();
+					res.sendStatus(200);	
 				}
 			});
 		});
