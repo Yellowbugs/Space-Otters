@@ -3,6 +3,7 @@ var multiplier;
 var cashedOut = false;
 var count = 0;
 var coins = 10;
+var fillColor = "green";
 
 var xValues = [];
 var yValues = [];
@@ -51,9 +52,12 @@ function generateData(value, i1, i2, step = 1) {
 }
 
 function playCrash() {
-    $.post('/bet', { id: document.getElementById('otters').value, betAmount: document.getElementById('betAmount').value }, function(data) {
+    betAmount = document.getElementById('betAmount').value;
+    $.post('/bet', { id: document.getElementById('otters').value, betAmount: betAmount }, function(data) {
         multiplier = (Math.log(data)/Math.log(1.1))/0.6*1000;
         cashedOut = false;
+        fillColor = "green";
+        start = new Date().getTime();
 
         updateCoins();
 
@@ -63,9 +67,13 @@ function playCrash() {
             clearInterval(graphInterval);
             
             if(cashedOut == false) {
-                coins = 0;
-            }
+                    fillColor = "red";
+                    chart.update();
 
+                 }
+                
+            
+        
             cashedOut = true;
         }, multiplier);
 
@@ -79,6 +87,7 @@ function cashOut() {
 
     $.post('/cashout', { betAmount: document.getElementById('betAmount').value}, function() {
         updateCoins();
+
     });
 
 
@@ -89,6 +98,8 @@ function updateGraph() {
     yValues = [];
     generateData("Math.pow(1.1, 0.6*x)", 0, count/10, 0.1);
 
+    elapsed = new Date().getTime() - start;
+    currentMultiplier = Math.pow(1.1, 0.6*(elapsed/1000));
     chart.data.labels = xValues;
     chart.data.datasets = [{
         fill: false,
@@ -97,7 +108,18 @@ function updateGraph() {
         borderCapStyle: "round",
         data: yValues
     }];
-    
+    let myLineExtend = Chart.controllers.line.prototype.draw;
+    let ctx = document.getElementById('myChart').getContext('2d');
+    Chart.helpers.extend(Chart.controllers.line.prototype, {
+        draw: function() {
+          myLineExtend.apply(this, arguments);
+          this.chart.chart.ctx.textAlign = "center"
+          this.chart.chart.ctx.font = "normal 50px Bangers";
+          this.chart.chart.ctx.fillStyle = fillColor;
+          this.chart.chart.ctx.fillText("x" + Math.round(currentMultiplier * 100)/100, 300, 150)
+          this.chart.chart.ctx.fillText("+"+ Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100 + " Ottercoins", 300, 210)
+        }
+      });
     if (yValues.at(-1) < 2) {
         chart.options.scales.yAxes[0].ticks.max = 2;
     } else {
