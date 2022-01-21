@@ -7,6 +7,14 @@ const PORT = process.env.PORT || 3000;
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+var betAmount = 0;
+var cashedOut = true;
+var multiplier;
+var idSelected;
+var start = 0;
+var elapsed;
+var currentMultiplier;
+
 app.get('/getCoins', urlencodedParser, function (req, res) {
 	var con = mysql.createConnection({
 		host: "us-cdbr-east-05.cleardb.net",
@@ -25,17 +33,17 @@ app.get('/getCoins', urlencodedParser, function (req, res) {
 	});
 });
 
+app.get('/getMultiplier', urlencodedParser, function (req, res) {
+	elapsed = new Date().getTime() - start;
+	currentMultiplier = Math.pow(1.1, 0.6*(elapsed/1000));	
+	res.status(200).send(currentMultiplier.toString());
+	
+});
 app.get('/*', function (req,res) {
     res.sendFile(req.url, {root: './public'});
 });
 
-var betAmount = 0;
-var cashedOut = true;
-var multiplier;
-var idSelected;
-var start = 0;
-var elapsed;
-var currentMultiplier;
+
 
 
 app.post('/bet', urlencodedParser, function (req, res) {
@@ -54,7 +62,7 @@ app.post('/bet', urlencodedParser, function (req, res) {
 			if (err) throw err;
 			betAmount = req.body.betAmount;
 			idSelected = req.body.id;
-			if (betAmount < JSON.parse(JSON.stringify(result))[0].coins && betAmount > 0) {
+			if (betAmount <= JSON.parse(JSON.stringify(result))[0].coins && betAmount > 0) {
 				con.query("UPDATE coinamounts SET coins = ? WHERE id = ?",[JSON.parse(JSON.stringify(result))[0].coins - betAmount, idSelected], function (err, result) {
 					if (err) throw err;
 					con.end();
@@ -104,6 +112,9 @@ app.post('/cashout', urlencodedParser, function (req, res) {
 	}
 });
 
-app.listen(PORT, () => console.log(`Our app is running  on port ${PORT}`));
+
+
+
+app.listen(PORT, () => console.log(`Our app is running on port ${PORT}`));
 
 

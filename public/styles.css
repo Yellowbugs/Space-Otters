@@ -16,7 +16,7 @@ header {
   margin-top: 0px;
   color: white;
   font-size: 100px;
-  font-family: Bangers;
+  font-family: Russo One;
     text-align: center;
   margin-bottom: 25px;
   letter-spacing: 10px;
@@ -24,13 +24,14 @@ header {
 }
 #crashHeader{
   margin-bottom: 0px;
+  margin-top: 100px;
 }
 
 body {
   
     box-sizing: border-box;
     display: grid;
-    font-family: Bangers;
+    font-family: Russo One;
     font-size: min(200%, 5vmin);
     margin: 0;
     
@@ -89,7 +90,7 @@ body {
   .topnav a {
     float: left;
     color: #f2f2f2;
-    font-family: Bangers;
+    font-family: Russo One;
     text-align: center;
     margin-top: 50px;
     height: 100%;
@@ -114,6 +115,10 @@ body {
   .topnav a:hover:not(.active) {
     color: rgba(255, 255, 255, 0.452);
   }
+  #crashTopnav a{
+    font-size: 18px;
+  }
+ 
 
 
 .purplebox{
@@ -406,7 +411,7 @@ button {
   background: black;
   color: rgb(255, 255, 255);
   border: 0.25rem solid #3f3f3f;
-  font-family: Bangers;  
+  font-family: Russo One;  
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -464,7 +469,7 @@ button.grow_box:hover::after {
   top: 62px;
   background-color: gray;
   color: black;
-  font-family: bangers;
+  font-family: Russo One;
   border-radius: 10px/10px;
   font-size: 75%;
   height: 60px;
@@ -487,7 +492,7 @@ button.grow_box:hover::after {
   top: 62px;
   background-color: gray;
   color: black;
-  font-family: bangers;
+  font-family: Russo One;
   border-radius: 10px/10px;
   font-size: 75%;
   height: 60px;
@@ -505,7 +510,7 @@ button.grow_box:hover::after {
   top: 62px;
   background-color: gray;
   color: black;
-  font-family: bangers;
+  font-family: Russo One;
   border-radius: 10px/10px;
   font-size: 75%;
   height: 50px;
@@ -564,7 +569,7 @@ button.grow_box:hover::after {
   list-style-type: none;
   padding: 1em;
   text-align: center;
-  font-family: Bangers;
+  font-family: Russo One;
   color: black; 
   line-height: 50px;
   padding: 0%;
@@ -579,7 +584,7 @@ button.grow_box:hover::after {
   padding-right: 30px;
   list-style-type: none;
   text-align: center;
-  font-family: Bangers;
+  font-family: Russo One;
   color: black;  
   
 }
@@ -647,8 +652,9 @@ border: none;
 #instagramTopNav{
   margin-top:-33px;
 }
+
 .linkTopNav{
-  float: right;
+  float: left;
   margin-left: 0;
   margin-top: -25px; 
  

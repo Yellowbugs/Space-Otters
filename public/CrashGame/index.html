@@ -8,10 +8,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Russo One' rel='stylesheet'>
+
 </head>
 
-<body><div class = "container"></div><header id="crashHeader">Crash Game</header>
-<article id = "graph" class="purplebox active" >
+<body><div class = "container"></div>
+    <div class = "topnav" id = "crashTopnav">
+        <a onclick="returnHome()"><img src="../Images/Logo.png" width="100px"></a>
+        <a onclick="goBackToWebsite()">Home</a>
+        <a>How To Play</a>
+        <a>Leaderboards</a>
+        <a style="width: 10%;">Ottercoin Lookup</a>
+        <a style="width: 6%;">FAQ</a>
+        <a><img  class="linkTopNav" id ="instagramTopNav" onclick="instagram()" src="../Images/instagram.png" alt="instagram"></a>
+        <a><img  class="linkTopNav" id ="twitterTopNav" onclick="twitter()" src="../Images/twitter.png" alt="twitter"></a>
+        <a><img  class="linkTopNav" id = "discordTopNav" onclick="discord()"  src="../Images/discord.png" alt="discord"></a>
+        <a><button id = "connectWallet" class = "grow_box" onclick="connectWallet()">Connect Wallet</button></a>
+      </div>
+      <header id="crashHeader">Crash Game</header>
+    <article id = "graph" class="purplebox active" >  
+
 <canvas id="myChart" style="width:100%" style="font-family: Bangers;"></canvas>
 <script src='js/index.js'></script>
 </article>
@@ -22,7 +38,7 @@
 <button onclick='cashOut()' id = "cashout">
     Cashout
 </button>
-<textarea id='betAmount' placeholder="bet amount"></textarea>
+<textarea id='betAmount' min="0" step="1" placeholder="bet amount"></textarea>
 <select id='otters' onchange="updateCoins()"><option>Choose Otter</option></select>
 <div  id='coins'>Coins:</div>
 </article>

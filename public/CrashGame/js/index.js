@@ -4,6 +4,8 @@ var cashedOut = false;
 var count = 0;
 var coins = 10;
 var fillColor = "green";
+var cashedOutReward = 0;
+var crashed = false;
 
 var xValues = [];
 var yValues = [];
@@ -52,6 +54,7 @@ function generateData(value, i1, i2, step = 1) {
 }
 
 function playCrash() {
+    crashed = false;
     betAmount = document.getElementById('betAmount').value;
     $.post('/bet', { id: document.getElementById('otters').value, betAmount: betAmount }, function(data) {
         multiplier = (Math.log(data)/Math.log(1.1))/0.6*1000;
@@ -65,12 +68,13 @@ function playCrash() {
         graphInterval = setInterval(updateGraph, 100);
         setTimeout(function() {
             clearInterval(graphInterval);
-            
+            crashed = true;
             if(cashedOut == false) {
                     fillColor = "red";
-                    chart.update();
-
+                    cashedOutReward = 0;
                  }
+                 chart.update();
+
                 
             
         
@@ -78,28 +82,35 @@ function playCrash() {
         }, multiplier);
 
         count = 0;
-        multiplier = 0;
     });
 }
 
 function cashOut() {
-      
-
-    $.post('/cashout', { betAmount: document.getElementById('betAmount').value}, function() {
+    
+    $.post('/cashout', function() {
         updateCoins();
-
     });
-
+    if (cashedOut == false){
+        cashedOutReward = (Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100).toFixed(2);
+    }
+    if(crashed == false && cashedOut == false){
+        document.getElementById("coins").style.color = 'green';
+        setTimeout(function(){
+        document.getElementById("coins").style.color = "black";
+        }, 2000);
+    }
+    cashedOut = true;
 
 }
  
 function updateGraph() {
     xValues = [];
     yValues = [];
-    generateData("Math.pow(1.1, 0.6*x)", 0, count/10, 0.1);
 
-    elapsed = new Date().getTime() - start;
-    currentMultiplier = Math.pow(1.1, 0.6*(elapsed/1000));
+    $.get('/getMultiplier',{}, function(data) {
+        currentMultiplier = data;
+        });
+    generateData("Math.pow(1.1, 0.6*x)", 0, (Math.log(currentMultiplier)/Math.log(1.1))/0.6, 0.1);
     chart.data.labels = xValues;
     chart.data.datasets = [{
         fill: false,
@@ -114,10 +125,20 @@ function updateGraph() {
         draw: function() {
           myLineExtend.apply(this, arguments);
           this.chart.chart.ctx.textAlign = "center"
-          this.chart.chart.ctx.font = "normal 50px Bangers";
+          this.chart.chart.ctx.font = "normal 50px Russo One";
           this.chart.chart.ctx.fillStyle = fillColor;
-          this.chart.chart.ctx.fillText("x" + Math.round(currentMultiplier * 100)/100, 300, 150)
-          this.chart.chart.ctx.fillText("+"+ Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100 + " Ottercoins", 300, 210)
+          if (cashedOut == true){
+            this.chart.chart.ctx.fillText("Cashed Out!", 300, 150);
+            this.chart.chart.ctx.fillText("+"+ cashedOutReward + " Ottercoins", 300, 210)
+          }
+          if(cashedOut == false && crashed == true){
+            this.chart.chart.ctx.fillText("x" + Math.round(currentMultiplier * 100)/100, 300, 150)
+            this.chart.chart.ctx.fillText("+0" + " Ottercoins", 300, 210);
+        } 
+          if(crashed == false && cashedOut == false){
+            this.chart.chart.ctx.fillText("x" + Math.round(currentMultiplier * 100)/100, 300, 150)
+            this.chart.chart.ctx.fillText("+"+ (Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100).toFixed(2) + " Ottercoins", 300, 210)
+          }
         }
       });
     if (yValues.at(-1) < 2) {
@@ -959,4 +980,8 @@ async function getOtters(){
     }
     updateCoins();
     return ottersOwned;
+}
+
+function goBackToWebsite(){
+    window.open("../index.html", "_self").focus();
 }
