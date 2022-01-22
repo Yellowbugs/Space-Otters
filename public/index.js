@@ -18,13 +18,13 @@ function returnHome(){
     document.documentElement.scrollTop = 0;
     }
 function goToRoadmap(){
-    document.documentElement.scrollTop = 800;
+    document.documentElement.scrollTop = document.getElementById('Roadmap').offsetTop - 90;;
     }
 function goToCrew(){
-     document.documentElement.scrollTop = 3300;
+    document.documentElement.scrollTop = document.getElementById('teamTitle').offsetTop - 90;
      }
 function goToFAQ(){
-    document.documentElement.scrollTop = 5000;
+    document.documentElement.scrollTop = document.getElementById('FAQ').offsetTop - 90;
     }
 function showAnswer(id){
     var answer = answers[id-1];
@@ -77,150 +77,7 @@ function displayNextImage() {
     x = (x === images.length - 1) ? 0 : x + 1;
     document.getElementById("nftPics").src = images[x];
     
-}
-/*async function addFile (files) {
-    let node = await Ipfs.create({
-        url: "https://api.pinata.cloud/psa",
-        repo: 'file-path' + Math.random(),
-        EXPERIMENTAL: {
-            pubsub: true, // required, enables pubsub
-          }
-    })
-
-    const key =  await node.key.gen('tobynapolitanoisverycute');
-    console.log(key);
-    node.name.resolve(key);
-
-    for (let i = 0; i < files.length; i++) {
-        const { cid } = await node.add(files[i]);
-        const url = `https://gateway.pinata.cloud/ipfs/${cid._baseCache.entries().next().value[1]}`;
-        //console.log(url);
-        node.name.publish("/ipfs/" + cid._baseCache.entries().next().value[1], {key: 'tobynapolitanoisverycute',allowOffline: 'false'}).then(function (res) {
-            console.log(key);
-            node.name.resolve(res);
-            console.log(res.value);
-            console.log(`https://gateway.ipfs.io/ipns/${key.id}`)
-        })
-        
-    }
-    
-
-
-}
-async function updateCoins () {
-    var json1 = `{
-    "name": "Space Otters #1",
-    "description": "10,000 uniquely generated NFTs. Welcome to Otter Space!",
-    "image": "ipfs://QmWSgCbebZoen382iG8YmbLoU4MmrAWJFnyLzQwKLyiX6w/1.png",
-    "dna": "39c0ecaec67883f4ade18c954accad35f3bda112",
-    "edition": 1,
-    "date": 1638247575364,
-    "sellet_fee_basis_points": 500,
-    "collection": {
-        "name": "Space Otters",
-        "description": "10,000 uniquely generated NFTs. Welcome to Otter Space!",
-        "family": "Space Otters"
-    },
-    "properties": {
-        "coin-amount": 10000,
-        "creators": [
-        {
-            "address": "0xE7Fd69344eE1AdFC64B4C90bE0187E4bCC0417d8",
-            "share": 100
-        }
-        ]
-    },
-    "attributes": [
-        {
-        "trait_type": "Space",
-        "value": "Basic Space"
-        },
-        {
-        "trait_type": "Planets",
-        "value": "Sun"
-        },
-        {
-        "trait_type": "Primary Colors",
-        "value": "Green Primary Color_"
-        },
-        {
-        "trait_type": "Clothes",
-        "value": "Drums"
-        },
-        {
-        "trait_type": "Helmets",
-        "value": "Wizard Helmet"
-        },
-        {
-        "trait_type": "Eyes",
-        "value": "Money Eyes"
-        }
-    ]
-}`;
-
-    var json2 = `{
-    "name": "Space Otters #2",
-    "description": "10,000 uniquely generated NFTs. Welcome to Otter Space!",
-    "image": "ipfs://QmWSgCbebZoen382iG8YmbLoU4MmrAWJFnyLzQwKLyiX6w/2.png",
-    "dna": "29e221af6fa934d42c6fd17ef7430670547f4998",
-    "edition": 2,
-    "date": 1638247575589,
-    "sellet_fee_basis_points": 500,
-    "collection": {
-        "name": "Space Otters",
-        "description": "10,000 uniquely generated NFTs. Welcome to Otter Space!",
-        "family": "Space Otters"
-    },
-    "properties": {
-        "coin-amount": 10000,
-        "creators": [
-        {
-            "address": "0xE7Fd69344eE1AdFC64B4C90bE0187E4bCC0417d8",
-            "share": 100
-        }
-        ]
-    },
-    "attributes": [
-        {
-        "trait_type": "Space",
-        "value": "Basic Space"
-        },
-        {
-        "trait_type": "Planets",
-        "value": "Sun"
-        },
-        {
-        "trait_type": "Primary Colors",
-        "value": "Lime Yellow Gradient Primary Color_"
-        },
-        {
-        "trait_type": "Clothes",
-        "value": "Diamond"
-        },
-        {
-        "trait_type": "Helmets",
-        "value": "Santa Helmet"
-        },
-        {
-        "trait_type": "Eyes",
-        "value": "Basic Suprised Eyes"
-        }
-    ]
-}`;
-
-    var files = [
-        {
-            path: '/metadata/1.json',
-            content: json1
-        },
-        {
-            path: '/metadata/2.json',
-            content: json2
-        }
-    ]
-
-    addFile(files);
-}*/
+}   
 
 async function onStart() {
     setInterval(displayNextImage, 500);

@@ -127,10 +127,13 @@ function updateGraph() {
           this.chart.chart.ctx.textAlign = "center"
           this.chart.chart.ctx.font = "normal 50px Russo One";
           this.chart.chart.ctx.fillStyle = fillColor;
+          this.chart.chart.ctx.shadowColor="black";
+          this.chart.chart.ctx.shadowBlur=5;
+          this.chart.chart.ctx.lineWidth=1;
           if (cashedOut == true){
             this.chart.chart.ctx.fillText("Cashed Out!", 300, 150);
             this.chart.chart.ctx.fillText("+"+ cashedOutReward + " Ottercoins", 300, 210)
-          }
+        }
           if(cashedOut == false && crashed == true){
             this.chart.chart.ctx.fillText("x" + Math.round(currentMultiplier * 100)/100, 300, 150)
             this.chart.chart.ctx.fillText("+0" + " Ottercoins", 300, 210);
@@ -138,7 +141,9 @@ function updateGraph() {
           if(crashed == false && cashedOut == false){
             this.chart.chart.ctx.fillText("x" + Math.round(currentMultiplier * 100)/100, 300, 150)
             this.chart.chart.ctx.fillText("+"+ (Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100).toFixed(2) + " Ottercoins", 300, 210)
-          }
+            this.chart.chart.ctx.strokeText("x" + Math.round(currentMultiplier * 100)/100, 300, 150);
+            this.chart.chart.ctx.strokeText("+"+ (Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100).toFixed(2) + " Ottercoins", 300, 210);
+        }
         }
       });
     if (yValues.at(-1) < 2) {
@@ -984,4 +989,13 @@ async function getOtters(){
 
 function goBackToWebsite(){
     window.open("../index.html", "_self").focus();
+}
+function discord(){
+    window.open("https://discord.gg/C4YcMmxkH2"),'_blank';
+}
+function twitter(){
+    window.open("https://twitter.com/spaceotters_nft"),'_blank';
+}
+function instagram(){
+    window.open("https://www.instagram.com/spaceotters_nft/"),'_blank';
 }
