@@ -5,7 +5,7 @@ var count = 0;
 var coins = 10;
 var fillColor = "green";
 var cashedOutReward = 0;
-var crashed = false;
+var crashed;
 var currentMultiplier = 0;
 var rocket = new Image(61,68);
 rocket.src = "../../Images/rocket.png";
@@ -113,7 +113,7 @@ function updateGraph() {
     chart.data.datasets = [{
         fill: false,
         radius: 0,
-        borderColor: "hsl(187, 98%, 25%)",
+        borderColor: "rgb(255,24,23)",
         borderCapStyle: "round",
         data: yValues
     }];
@@ -132,6 +132,7 @@ function updateGraph() {
             this.chart.chart.ctx.shadowColor="black";
             this.chart.chart.ctx.shadowBlur=5;
             this.chart.chart.ctx.lineWidth=1;
+            this.chart.chart.ctx.strokeStyle="black";
 
             if (cashedOut == true){
                 this.chart.chart.ctx.fillText("Cashed Out!", 300, 150);
