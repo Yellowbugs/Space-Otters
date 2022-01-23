@@ -1027,6 +1027,6 @@ async function connectWallet(){
         totalSupply = await contract.methods.totalSupply().call();
         document.getElementById("mintCount").innerText =  totalSupply + " out of 10,000";
         document.getElementById("mintCountshow").classList.remove("hidden");
-        
+        getOtters();
     }
     
