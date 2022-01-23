@@ -1014,3 +1014,19 @@ function instagram(){
 function returnHome(){
     document.documentElement.scrollTop = 0;
     }
+async function connectWallet(){
+        await window.web3.currentProvider.enable();
+        web3 = new Web3(window.web3.currentProvider);
+        await window.ethereum.send('eth_requestAccounts');
+               
+    
+        var accounts = await web3.eth.getAccounts();
+        account = accounts[0];
+        document.getElementById('connectWallet').innerText = "Wallet Connected";
+        console.log(account);
+        totalSupply = await contract.methods.totalSupply().call();
+        document.getElementById("mintCount").innerText =  totalSupply + " out of 10,000";
+        document.getElementById("mintCountshow").classList.remove("hidden");
+        
+    }
+    
