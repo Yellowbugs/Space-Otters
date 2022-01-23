@@ -6,10 +6,14 @@ var coins = 10;
 var fillColor = "green";
 var cashedOutReward = 0;
 var crashed = false;
+var rocket = new Image(61,68);
+rocket.src = "../../Images/rocket.png";
+var currentMultiplier = 0;
+
 
 var xValues = [];
 var yValues = [];
-generateData("x", 1, 10, 1);
+
 getOtters();
 
 var chart = new Chart("myChart", {
@@ -18,7 +22,12 @@ var chart = new Chart("myChart", {
     scales: {
         yAxes: [{
             display: true,
-            position: 'right'
+            position: 'right',
+                ticks: {
+                    min: 1,
+                    max: 2,
+                    maxTicksLimit: 10,
+                }
         }],
         xAxes: [{
             ticks: {
@@ -60,7 +69,6 @@ function playCrash() {
         multiplier = (Math.log(data)/Math.log(1.1))/0.6*1000;
         cashedOut = false;
         fillColor = "green";
-        start = new Date().getTime();
 
         updateCoins();
 
@@ -74,14 +82,9 @@ function playCrash() {
                     cashedOutReward = 0;
                  }
                  chart.update();
-
-                
-            
-        
-            cashedOut = true;
+            crashed = true;
         }, multiplier);
 
-        count = 0;
     });
 }
 
@@ -119,6 +122,8 @@ function updateGraph() {
         borderCapStyle: "round",
         data: yValues
     }];
+  
+    
     let myLineExtend = Chart.controllers.line.prototype.draw;
     let ctx = document.getElementById('myChart').getContext('2d');
     Chart.helpers.extend(Chart.controllers.line.prototype, {
@@ -151,10 +156,13 @@ function updateGraph() {
     } else {
         chart.options.scales.yAxes[0].ticks.max = yValues.at(-1);
     }
+    
+
 
     chart.update();
+    ctx.drawImage(rocket);
 
-    count++;
+    
 }
 
 function updateCoins() {
@@ -999,3 +1007,6 @@ function twitter(){
 function instagram(){
     window.open("https://www.instagram.com/spaceotters_nft/"),'_blank';
 }
+function returnHome(){
+    document.documentElement.scrollTop = 0;
+    }
