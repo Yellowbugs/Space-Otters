@@ -6,10 +6,9 @@ var coins = 10;
 var fillColor = "green";
 var cashedOutReward = 0;
 var crashed = false;
+var currentMultiplier = 0;
 var rocket = new Image(61,68);
 rocket.src = "../../Images/rocket.png";
-var currentMultiplier = 0;
-
 
 var xValues = [];
 var yValues = [];
@@ -47,10 +46,6 @@ var chart = new Chart("myChart", {
     },
     responsive:true,
     maintainAspectRatio: false,
-
-        
-      
-    
   },
   
 });
@@ -125,30 +120,41 @@ function updateGraph() {
   
     
     let myLineExtend = Chart.controllers.line.prototype.draw;
-    let ctx = document.getElementById('myChart').getContext('2d');
+    let canvas = document.getElementById('myChart');
+    let ctx = canvas.getContext('2d');
     Chart.helpers.extend(Chart.controllers.line.prototype, {
         draw: function() {
-          myLineExtend.apply(this, arguments);
-          this.chart.chart.ctx.textAlign = "center"
-          this.chart.chart.ctx.font = "normal 50px Russo One";
-          this.chart.chart.ctx.fillStyle = fillColor;
-          this.chart.chart.ctx.shadowColor="black";
-          this.chart.chart.ctx.shadowBlur=5;
-          this.chart.chart.ctx.lineWidth=1;
-          if (cashedOut == true){
-            this.chart.chart.ctx.fillText("Cashed Out!", 300, 150);
-            this.chart.chart.ctx.fillText("+"+ cashedOutReward + " Ottercoins", 300, 210)
-        }
-          if(cashedOut == false && crashed == true){
-            this.chart.chart.ctx.fillText("x" + Math.round(currentMultiplier * 100)/100, 300, 150)
-            this.chart.chart.ctx.fillText("+0" + " Ottercoins", 300, 210);
-        } 
-          if(crashed == false && cashedOut == false){
-            this.chart.chart.ctx.fillText("x" + Math.round(currentMultiplier * 100)/100, 300, 150)
-            this.chart.chart.ctx.fillText("+"+ (Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100).toFixed(2) + " Ottercoins", 300, 210)
-            this.chart.chart.ctx.strokeText("x" + Math.round(currentMultiplier * 100)/100, 300, 150);
-            this.chart.chart.ctx.strokeText("+"+ (Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100).toFixed(2) + " Ottercoins", 300, 210);
-        }
+            myLineExtend.apply(this, arguments);
+
+            this.chart.chart.ctx.textAlign = "center"
+            this.chart.chart.ctx.font = "normal 50px Russo One";
+            this.chart.chart.ctx.fillStyle = fillColor;
+            this.chart.chart.ctx.shadowColor="black";
+            this.chart.chart.ctx.shadowBlur=5;
+            this.chart.chart.ctx.lineWidth=1;
+
+            if (cashedOut == true){
+                this.chart.chart.ctx.fillText("Cashed Out!", 300, 150);
+                this.chart.chart.ctx.fillText("+"+ cashedOutReward + " Ottercoins", 300, 210)
+            }
+
+            if(cashedOut == false && crashed == true){
+                this.chart.chart.ctx.fillText("x" + Math.round(currentMultiplier * 100)/100, 300, 150)
+                this.chart.chart.ctx.fillText("+0" + " Ottercoins", 300, 210);
+            } 
+
+            if(crashed == false && cashedOut == false){
+                this.chart.chart.ctx.fillText("x" + Math.round(currentMultiplier * 100)/100, 300, 150)
+                this.chart.chart.ctx.fillText("+"+ (Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100).toFixed(2) + " Ottercoins", 300, 210)
+                this.chart.chart.ctx.strokeText("x" + Math.round(currentMultiplier * 100)/100, 300, 150);
+                this.chart.chart.ctx.strokeText("+"+ (Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100).toFixed(2) + " Ottercoins", 300, 210);
+            }
+
+            if (yValues.at(-1) < 2) {
+                ctx.drawImage(rocket, canvas.width - 80, (canvas.height - 80) - ((yValues.at(-1) - 1) * (canvas.height - 80)));
+            } else {
+                ctx.drawImage(rocket, canvas.width - 80, 0);
+            }
         }
       });
     if (yValues.at(-1) < 2) {
@@ -159,10 +165,7 @@ function updateGraph() {
     
 
 
-    chart.update();
-    ctx.drawImage(rocket);
-
-    
+    chart.update();    
 }
 
 function updateCoins() {
