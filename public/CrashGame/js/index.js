@@ -9,6 +9,8 @@ var crashed;
 var currentMultiplier = 0;
 var rocket = new Image(61,68);
 rocket.src = "../../Images/rocket.png";
+var explosion = new Image(61,68);
+explosion.src = "../../Images/explosion.png";
 
 var xValues = [];
 var yValues = [];
@@ -150,12 +152,20 @@ function updateGraph() {
                 this.chart.chart.ctx.strokeText("x" + Math.round(currentMultiplier * 100)/100, 300, 150);
                 this.chart.chart.ctx.strokeText("+"+ (Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100).toFixed(2) + " Ottercoins", 300, 210);
             }
-
-            if (yValues.at(-1) < 2) {
-                ctx.drawImage(rocket, canvas.width - 80, (canvas.height - 80) - ((yValues.at(-1) - 1) * (canvas.height - 80)));
-            } else {
-                ctx.drawImage(rocket, canvas.width - 80, 0);
+            if(crashed){
+                if (yValues.at(-1) < 2) {
+                    ctx.drawImage(explosion, canvas.width - 80, (canvas.height - 80) - ((yValues.at(-1) - 1) * (canvas.height - 80)));
+                } else {
+                    ctx.drawImage(explosion, canvas.width - 80, 0);
+                } 
             }
+            else{
+                if (yValues.at(-1) < 2) {
+                    ctx.drawImage(rocket, canvas.width - 80, (canvas.height - 80) - ((yValues.at(-1) - 1) * (canvas.height - 80)));
+                } else {
+                    ctx.drawImage(rocket, canvas.width - 80, 0);
+            }
+        }
         }
       });
     if (yValues.at(-1) < 2) {
@@ -1013,7 +1023,10 @@ function instagram(){
 }
 function returnHome(){
     document.documentElement.scrollTop = 0;
-    }
+}
+function gotoHowToPlay(){
+    document.documentElement.scrollTop = document.getElementById('howToPlay').offsetTop - 90;;
+}
 async function connectWallet(){
         await window.web3.currentProvider.enable();
         web3 = new Web3(window.web3.currentProvider);
@@ -1029,4 +1042,46 @@ async function connectWallet(){
         document.getElementById("mintCountshow").classList.remove("hidden");
         getOtters();
     }
+function reveal(){
+        var reveal = document.querySelectorAll('.purplebox');
     
+        for (var i=0; i<reveal.length;i++){
+            var windowheight = window.innerHeight;
+            var revealtop = reveal[i].getBoundingClientRect().top;
+            var revealpoint = 150;
+    
+            if(revealtop < windowheight -revealpoint){
+                reveal[i].classList.add('active');
+            }
+            
+        }
+    
+    }
+window.addEventListener('scroll',reveal);
+function timeTillLaunch(){
+    var currentDate = new Date().getTime();
+    var endDate = 1646510400000; 
+    var x = setInterval(function() {
+        var currentDate = new Date().getTime();
+        var d = endDate - currentDate;
+        var days = Math.floor(d / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((d % (1000 * 60)) / 1000);
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours ;
+        document.getElementById("minutes").innerHTML = minutes ;
+        document.getElementById("seconds").innerHTML = seconds ;
+        if (d < 0) {
+            clearInterval(x);
+            document.getElementById("launchText").innerHTML = "Competition Live!!";
+            document.getElementById("launchText").style.fontSize = "100%";
+            document.getElementById("dateBoxesh").remove();
+            document.getElementById("dateBoxesd").remove();
+            document.getElementById("dateBoxesm").remove();
+            document.getElementById("dateBoxess").remove();
+          }
+        }, 1000);
+    
+}
+window.onload = timeTillLaunch();

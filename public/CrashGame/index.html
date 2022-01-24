@@ -17,15 +17,25 @@
     <div class = "topnav" id = "crashTopnav">
         <a onclick="returnHome()"><img src="../Images/LogoNew.png" width="75%" height="65%"></a>
         <a onclick="goBackToWebsite()">Home</a>
-        <a>How To Play</a>
+        <a onclick="gotoHowToPlay()">How To Play</a>
         <a>Leaderboards</a>
-        <a style="width: 10%;">Ottercoin Lookup</a>
-        <a style="width: 6%;">FAQ</a>
+        <a>Ottercoin Lookup</a>
+        <a>FAQ</a>
         <a><img  class="linkTopNav" id ="instagramTopNav" onclick="instagram()" src="../Images/instagram.png" alt="instagram"></a>
         <a><img  class="linkTopNav" id ="twitterTopNav" onclick="twitter()" src="../Images/twitter.png" alt="twitter"></a>
         <a><img  class="linkTopNav" id = "discordTopNav" onclick="discord()"  src="../Images/discord.png" alt="discord"></a>
         <a><button id = "connectWallet" class = "grow_box" onclick="connectWallet()">Connect Wallet</button></a>
       </div>
+      <article id ="crashCountdown" class="purplebox active" >
+
+        <ul>
+          <li id = 'launchText'>First Competition:</li>
+          <li class="launchText" id = "dateBoxesd"><span id="days"></span>days</li>
+          <li class="launchText" id = "dateBoxesh"><span id="hours"></span>Hours</li>
+          <li class="launchText" id = "dateBoxesm"><span id="minutes"></span>Minutes</li>
+          <li class="launchText" id = "dateBoxess"><span id="seconds"></span>Seconds</li>
+        </ul>
+        </article>
       <header id="crashHeader"><img src="../Images/rocket.png">Crash Game<img src="../Images/rocket.png"></header>
     <article id = "graph" class="purplebox active" >  
 
@@ -44,5 +54,19 @@
 <div  id='coins'>Coins:</div>
 </article>
 
+<article class="purplebox" id = "howToPlay" >
+    <ul id="rules">How To Play<br>
+        <li style="list-style-type: none;">______________________</li>
+        <li>mint an otter or buy on opensea</li>
+        <li>select which otter you wish to play as</li>
+        <li>input a bet amount</li>
+        <li>click bet</li>
+        <li>click cashout before rocket crashes</li>
+        <li>multiplier will be applied to your bet</li>
+        <li>if rocket crashes, you lose your bet</li>
+        <li>NOTE: Ottercoins currently have no real value</li>
+    </ul>
+    <article id= "videoExample" >video goes here</article>
+</article>
 </body>
 </html>
