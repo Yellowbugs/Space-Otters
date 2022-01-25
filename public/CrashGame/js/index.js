@@ -9,6 +9,12 @@ var crashed;
 var currentMultiplier = 0;
 var rocket = new Image(61,68);
 rocket.src = "../../Images/rocket.png";
+var rocket1 = new Image(81,47);
+rocket1.src = "../../Images/rocket1.png";
+var rocket2 = new Image(77,49);
+rocket2.src = "../../Images/rocket2.png";
+var rocket3 = new Image(68,60);
+rocket3.src = "../../Images/rocket3.png";
 var explosion = new Image(61,68);
 explosion.src = "../../Images/explosion.png";
 
@@ -66,11 +72,12 @@ function playCrash() {
         multiplier = (Math.log(data)/Math.log(1.1))/0.6*1000;
         cashedOut = false;
         fillColor = "green";
+        start = new Date().getTime();
 
         updateCoins();
 
         clearInterval(graphInterval);
-        graphInterval = setInterval(updateGraph, 100);
+        graphInterval = setInterval(updateGraph, 10);
         setTimeout(function() {
             clearInterval(graphInterval);
             crashed = true;
@@ -86,12 +93,13 @@ function playCrash() {
 }
 
 function cashOut() {
-    
-    $.post('/cashout', function() {
+    elapsed = new Date().getTime() - start;
+    currentMultiplier = Math.pow(1.1, 0.6*(elapsed/1000));
+    $.post('/cashout',{currentMultiplier: currentMultiplier}, function() {
         updateCoins();
     });
     if (cashedOut == false){
-        cashedOutReward = (Math.round(betAmount * 100)/100* Math.round(currentMultiplier * 100)/100).toFixed(2);
+        cashedOutReward = (Math.round((betAmount*currentMultiplier) * 100)/100);
     }
     if(crashed == false && cashedOut == false){
         document.getElementById("coins").style.color = 'green';
@@ -107,9 +115,9 @@ function updateGraph() {
     xValues = [];
     yValues = [];
 
-    $.get('/getMultiplier',{}, function(data) {
-        currentMultiplier = data;
-        });
+
+    elapsed = new Date().getTime() - start;
+    currentMultiplier = Math.pow(1.1, 0.6*(elapsed/1000));	
     generateData("Math.pow(1.1, 0.6*x)", 0, (Math.log(currentMultiplier)/Math.log(1.1))/0.6, 0.1);
     chart.data.labels = xValues;
     chart.data.datasets = [{
@@ -117,7 +125,8 @@ function updateGraph() {
         radius: 0,
         borderColor: "rgb(255,24,23)",
         borderCapStyle: "round",
-        data: yValues
+        data: yValues,
+        spanGaps: true,
     }];
   
     
@@ -154,16 +163,25 @@ function updateGraph() {
             }
             if(crashed){
                 if (yValues.at(-1) < 2) {
-                    ctx.drawImage(explosion, canvas.width - 80, (canvas.height - 80) - ((yValues.at(-1) - 1) * (canvas.height - 80)));
+                    ctx.drawImage(explosion, canvas.clientWidth - 80, (canvas.clientHeight - 80) - ((yValues.at(-1) - 1) * (canvas.clientHeight - 80)));
                 } else {
-                    ctx.drawImage(explosion, canvas.width - 80, 0);
+                    ctx.drawImage(explosion, canvas.clientWidth - 80, 0);
                 } 
             }
             else{
-                if (yValues.at(-1) < 2) {
-                    ctx.drawImage(rocket, canvas.width - 80, (canvas.height - 80) - ((yValues.at(-1) - 1) * (canvas.height - 80)));
+                if (yValues.at(-1) < 1.1) {
+                    ctx.drawImage(rocket1, canvas.clientWidth - 80, (canvas.clientHeight - 60) - ((yValues.at(-1) - 1) * (canvas.clientHeight - 80)));
+                }
+                else if (yValues.at(-1) < 1.2) {
+                    ctx.drawImage(rocket2, canvas.clientWidth - 80, (canvas.clientHeight - 60) - ((yValues.at(-1) - 1) * (canvas.clientHeight - 80)));
+                }
+                else if (yValues.at(-1) < 1.3) {
+                    ctx.drawImage(rocket3, canvas.clientWidth - 80, (canvas.clientHeight - 75) - ((yValues.at(-1) - 1) * (canvas.clientHeight - 80)));
+                }
+                else if (yValues.at(-1) < 2) {
+                    ctx.drawImage(rocket, canvas.clientWidth - 80, (canvas.clientHeight - 80) - ((yValues.at(-1) - 1) * (canvas.clientHeight - 80)));
                 } else {
-                    ctx.drawImage(rocket, canvas.width - 80, 0);
+                    ctx.drawImage(rocket, canvas.clientWidth - 80, 0);
             }
         }
         }
@@ -1025,8 +1043,14 @@ function returnHome(){
     document.documentElement.scrollTop = 0;
 }
 function gotoHowToPlay(){
-    document.documentElement.scrollTop = document.getElementById('howToPlay').offsetTop - 90;;
+    document.documentElement.scrollTop = document.getElementById('howToPlay').offsetTop - 115;
 }
+function gotoLeaderbordLookupPlaceholder(){
+    document.documentElement.scrollTop = document.getElementById('leaderboardLookupPlaceholder').offsetTop - 90;;
+}
+function gotoFAQ(){
+    document.documentElement.scrollTop = document.getElementById('FAQ').offsetTop - 90;
+    }
 async function connectWallet(){
         await window.web3.currentProvider.enable();
         web3 = new Web3(window.web3.currentProvider);
@@ -1085,3 +1109,28 @@ function timeTillLaunch(){
     
 }
 window.onload = timeTillLaunch();
+
+let questions = ["How can I play in the crash game?","How does the Crash Game work?","How long do the competitions last?", "What prizes can I win?","What is the Ottercoin lookup for?", "What happens if I run out of Ottercoins","Why are my otters not showing up?"];
+let answers = ["own a Space Otter either through minting or buying on Open Sea","Check the \"How To Play\" section","Most compitions will last a week starting on Sunday night. However, there will be daily games in the future. Check our twitter and discord for updates.", "The top few winners of the week's competition will recieve prizes of ETH and Space Otters. These rewards will increase as the community grows. Merch and special prizes will come as well. Visit the discord to check out this weeks prizes!", "The Ottercoin lookup feature allows for you to check how many Ottercoins a specific otter has for the current competition. This is useful when purchasing otters from Open Sea.","Don't worry, Ottercoins are replenished for free at the start of every new compition! You can always buy another otter if you want to play again too", "Make sure you have the Metamask extension enabled and are connected to the Ethereum mainnet"];
+var hidden = true;
+
+window.onload = function loadFAQ(){
+    for(let i = 1; i<= questions.length; i ++){
+        document.getElementById(i).innerHTML = questions[i-1];
+    }
+}
+
+
+function showAnswer(id){
+    var answer = answers[id-1];
+    var question = questions[id-1];
+    var holder = document.getElementById(id);
+    if(hidden){
+        holder.innerHTML = question + '<br>' + answer;
+        hidden = false;
+    }
+    else{
+        holder.innerHTML =  question ;
+        hidden = true;
+    }
+}

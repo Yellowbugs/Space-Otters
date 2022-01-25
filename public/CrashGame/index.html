@@ -10,6 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Russo One' rel='stylesheet'>
+<meta name="viewport" content="width=device-width, initial-scale=0.5">
 
 </head>
 
@@ -18,14 +19,17 @@
         <a onclick="returnHome()"><img src="../Images/LogoNew.png" width="75%" height="65%"></a>
         <a onclick="goBackToWebsite()">Home</a>
         <a onclick="gotoHowToPlay()">How To Play</a>
-        <a>Leaderboards</a>
-        <a>Ottercoin Lookup</a>
-        <a>FAQ</a>
+        <a onclick="gotoLeaderbordLookupPlaceholder()">Leaderboards</a>
+        <a onclick="gotoLeaderbordLookupPlaceholder()">Ottercoin Lookup</a>
+        <a onclick="gotoFAQ()">FAQ</a>
         <a><img  class="linkTopNav" id ="instagramTopNav" onclick="instagram()" src="../Images/instagram.png" alt="instagram"></a>
         <a><img  class="linkTopNav" id ="twitterTopNav" onclick="twitter()" src="../Images/twitter.png" alt="twitter"></a>
         <a><img  class="linkTopNav" id = "discordTopNav" onclick="discord()"  src="../Images/discord.png" alt="discord"></a>
         <a><button id = "connectWallet" class = "grow_box" onclick="connectWallet()">Connect Wallet</button></a>
       </div>
+      
+      <header id="crashHeader"><img src="../Images/rocket.png">Crash Game<img src="../Images/rocket.png"></header>
+      <p style="text-align: center; color: aqua;">play and win ethereum prizes in weekly competitions!</p>
       <article id ="crashCountdown" class="purplebox active" >
 
         <ul>
@@ -36,9 +40,8 @@
           <li class="launchText" id = "dateBoxess"><span id="seconds"></span>Seconds</li>
         </ul>
         </article>
-      <header id="crashHeader"><img src="../Images/rocket.png">Crash Game<img src="../Images/rocket.png"></header>
-    <article id = "graph" class="purplebox active" >  
 
+<article id = "graph" class="purplebox active" >  
 <canvas id="myChart" style="width:100%" style="font-family: Bangers;"></canvas>
 <script src='js/index.js'></script>
 </article>
@@ -68,5 +71,31 @@
     </ul>
     <article id= "videoExample" >video goes here</article>
 </article>
+<article id= "leaderboardLookupPlaceholder" class="purplebox">Leaderboards and Ottercoin lookup will be available when the first competition begins</article>
+<article id = "FAQ" class= 'purplebox' onload="loadFAQ()"> 
+  <header>FAQ</header>
+  <div class ="FAQlist">
+  <div class="FAQs" id = "1" onclick="showAnswer(id)">
+  </div>
+  <div class="FAQs" id = "2" onclick="showAnswer(id)">
+  </div>
+  <div class="FAQs" id = "3" onclick="showAnswer(id)">
+  </div>
+  <div class="FAQs" id = "4" onclick="showAnswer(id)">
+  </div>
+  <div class="FAQs" id = "5" onclick="showAnswer(id)">
+  </div>
+  <div class="FAQs" id = "6" onclick="showAnswer(id)">
+  </div>
+  <div class="FAQs" id = "7" onclick="showAnswer(id)">
+  </div>
+</div><br>
+<div style="color:aqua">If you have more questions, please visit our discord</div>
+<br></br>
+<button id = "links" class="instagram" onclick="instagram()"><img src="../Images/instagram.png" alt="instagram"></button>
+<button id = "links" class="twitter" onclick="twitter()"><img src="../Images/twitter.png" alt="twitter"></button>
+<button id = "links" onclick="discord()"><img src="../Images/discord.png" alt="discord"></button>
+</article>
+</div>
 </body>
 </html>

@@ -8,10 +8,11 @@ html {
   
 }
 @viewport {
-  zoom: 1.0;
-  min-zoom: 1.0;
-  max-zoom: 2.0;
+  width: device-width ;
+  zoom: 0.5 ;
 }
+
+
 header {
   margin-top: 0px;
   color: white;
@@ -24,7 +25,7 @@ header {
 }
 #crashHeader{
   margin-bottom: 0px;
-  margin-top: 0px;
+  margin-top: 120px;
 }
 
 body {
@@ -154,10 +155,12 @@ body {
   height: 500px;
   width: 75%;
   margin-top: 100px;
-  background: linear-gradient(to bottom, rgb(3,57,108),80%, mistyrose);
-  color:black;
+  background: black;
+  color:white;
   padding: 25px;
   display: flex;
+  border-color: white;
+  border: 10px solid white;
 
 }
 #rules{
@@ -167,8 +170,18 @@ body {
 #videoExample{
   position: relative;
   float: right;
-  width: 50%px;
+  width: 50%;
   top:50px;
+  text-align: center;
+}
+#leaderboardLookupPlaceholder{
+  width: 100%;
+  background: rgb(255,234,84);
+  color: black;
+  height: 150px;
+  text-align: center;
+  border-radius: 0px;
+  line-height: 150px;
 }
 #launchBox{
   margin-top: 120px;
@@ -178,10 +191,10 @@ body {
 }
 
 #crashCountdown{
-  margin-top: 120px;
+  margin-top: 20px;
   margin-bottom: 25px;
   height: 100px;
-  background: radial-gradient( hsl(273, 98%, 25%),hsl(59, 100%, 50%)) fixed;
+  background: radial-gradient( farthest-corner at 50% 1000px,hsl(273, 98%, 25%),hsl(59, 100%, 50%)) fixed;
 }
 
 .purplebox.active{

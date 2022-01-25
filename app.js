@@ -11,9 +11,6 @@ var betAmount = 0;
 var cashedOut = true;
 var multiplier;
 var idSelected;
-var start = 0;
-var elapsed;
-var currentMultiplier;
 
 app.get('/getCoins', urlencodedParser, function (req, res) {
 	var con = mysql.createConnection({
@@ -33,12 +30,6 @@ app.get('/getCoins', urlencodedParser, function (req, res) {
 	});
 });
 
-app.get('/getMultiplier', urlencodedParser, function (req, res) {
-	elapsed = new Date().getTime() - start;
-	currentMultiplier = Math.pow(1.1, 0.6*(elapsed/1000));	
-	res.status(200).send(currentMultiplier.toString());
-	
-});
 app.get('/*', function (req,res) {
     res.sendFile(req.url, {root: './public'});
 });
@@ -67,7 +58,6 @@ app.post('/bet', urlencodedParser, function (req, res) {
 					if (err) throw err;
 					con.end();
 					cashedOut = false;
-					start = new Date().getTime();
 					res.send(multiplier.toString());
 				});
 			} else {
@@ -90,8 +80,7 @@ app.post('/cashout', urlencodedParser, function (req, res) {
 			if (err) throw err;
 			con.query("SELECT coins FROM coinamounts WHERE id = ?",[idSelected] , function (err, result) {
 				if (err) throw err;
-				elapsed = new Date().getTime() - start;
-				currentMultiplier = Math.pow(1.1, 0.6*(elapsed/1000));
+				currentMultiplier = req.body.currentMultiplier;
 				console.log(currentMultiplier);
 				console.log(multiplier);
 				if (currentMultiplier < multiplier) {
