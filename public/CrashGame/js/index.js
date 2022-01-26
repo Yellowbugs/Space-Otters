@@ -77,7 +77,7 @@ function playCrash() {
         updateCoins();
 
         clearInterval(graphInterval);
-        graphInterval = setInterval(updateGraph, 10);
+        graphInterval = setInterval(updateGraph, 100);
         setTimeout(function() {
             clearInterval(graphInterval);
             crashed = true;

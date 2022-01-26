@@ -221,18 +221,20 @@ body {
 }
 
 #Roadmap{
- 
-  width: 100%;
+  width: 80%;
   padding: 0%;
   text-align: center;
-  color: black;
+  color: rgb(255,234,84);
   height: 200px;
   float: right;
-  background: rgb(255,234,84);
-  margin-bottom: 0;
-  border-radius: 0;
+  border-radius: 50px/50px;
   margin: 0%;
-  margin-top: 0;
+  margin-left: 10%;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  background: #000000;
+  border:3px solid rgb(255,234,84);
+  
   
 }
 
@@ -246,89 +248,119 @@ body {
   opacity: 1;
 }
 #roadmapItem1{
-  width: 100%;
-  padding: 0%;
+  width: 60%;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: center;
-  color: black;
+  color: rgb(255,203,59);
   height: 150px;
   float: right;
   margin-bottom: 0;
-  border-radius: 0;
-  margin: 0%;
+  margin-right: 10%;
+  border-radius: 50px/50px;
+  margin-bottom: 50px;
   padding-top: 50px;
-  background: rgb(255,203,59);
+  background: #000000;
+  border:3px solid rgb(255,203,59);
+  
 
 }
 #roadmapItem2{
-  width: 100%;
-  padding: 0%;
+  width: 60%;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: center;
-  color: black;
-  height:  150px;
+  color: rgb(253,170,42);
+  height: 150px;
   float: right;
   margin-bottom: 0;
-  border-radius: 0;
-  margin: 0%;
-  background: rgb(253,170,42);
-  line-height: 150px;
+  border-radius: 50px/50px;
+  margin-right: 10%;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  background: #000000;
+  border:3px solid rgb(253,170,42);
+
 }
 #roadmapItem3{
-  width: 100%;
-  padding: 0%;
+  width: 60%;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: center;
-  color: black;
-  height:  150px;
+  color: rgb(255,87,87);
+  height: 150px;
   float: right;
   margin-bottom: 0;
-  border-radius: 0;
-  margin: 0%;
-  background: rgb(255,87,87);
-  line-height: 150px;
+  border-radius: 50px/50px;
+  margin-right: 10%;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  background: #000000;
+  border:3px solid rgb(255,87,87);
 
 }
 #roadmapItem4{
-  width: 100%;
-  padding: 0%;
+  width: 60%;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: center;
-  color: black;
-  height:  150px;
+  color: rgb(253,170,42);
+  height: 150px;
   float: right;
   margin-bottom: 0;
-  border-radius: 0;
-  margin: 0%;
-  background: rgb(253,170,42);
-  line-height: 150px;
-
+  border-radius: 50px/50px;
+  margin-right: 10%;
+  padding-top: 50px;
+  margin-bottom: 50px;
+  background: #000000;
+  border:3px solid rgb(253,170,42);
 }
 #roadmapItem5{
-  width: 100%;
-  padding: 0%;
+  width: 60%;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: center;
-  color: black;
-  height:  150px;
+  color: rgb(255,203,59);
+  height: 150px;
   float: right;
   margin-bottom: 0;
-  border-radius: 0;
-  margin: 0%;
-  background: rgb(255,203,59);
-  line-height: 150px;
+  border-radius: 50px/50px;
+  margin-right: 10%;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  background: #000000;
+  border:3px solid rgb(255,203,59);
 
 }
 #roadmapItem6{
-  width: 100%;
-  padding: 0%;
+  width: 60%;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: center;
-  color: black;
-  height:  175px;
+  color: rgb(255,234,84);
+  height: 200px;
   float: right;
   margin-bottom: 0;
-  border-radius: 0;
-  margin: 0%;
-  background: rgb(255,234,84);
+  border-radius: 50px/50px;
+  margin-right: 10%;
+  margin-bottom: 50px;
   padding-top: 50px;
+  background: #000000;
+  border:3px solid rgb(255,234,84);
 }
 
-
+#zero{
+  width: 150px;
+  color: rgb(255,203,59);
+  height: 150px;
+  float: left;
+  border-radius: 100px/100px;
+  background: #000000;
+  border:3px solid rgb(255,203,59);
+  margin-left: 10%;
+  line-height: 150px;
+  text-align: center;
+}
 .roadmapKey{
   color:  white;
   width: 100px;
@@ -406,7 +438,7 @@ body {
     padding-top: 50px;
     text-align: center;
     color: white;
-    background: rgb(0,45,51); 
+    background: rgb(1,31,75); 
     display: flex;
 }
 #crashDetailText{
