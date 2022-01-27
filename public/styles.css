@@ -74,6 +74,49 @@ body {
     }
   }
 
+#error{
+  background: linear-gradient(rgb(255,82,82),10%,red);
+  position: fixed;
+  top: 100%;
+  left: 75%;
+  z-index: 2;
+  border-radius: 50px/50px;
+  font-size: 100%;
+  width: 20%;
+  padding: 15px;
+  text-align: center;
+  transition: all .5s ease-in-out;
+  opacity: 0;
+}
+#error2{
+  background: linear-gradient(rgb(255,82,82),10%,red);
+  position: fixed;
+  top: 100%;
+  left: 75%;
+  z-index: 2;
+  border-radius: 50px/50px;
+  font-size: 100%;
+  width: 20%;
+  padding: 15px;
+  text-align: center;
+  transition: all .5s ease-in-out;
+  opacity: 0;
+}
+#error_active{
+  background: linear-gradient(rgb(255,82,82),10%,red);
+  position: fixed;
+  top: 80%;
+  left: 75%;
+  z-index: 2;
+  border-radius: 50px/50px;
+  font-size: 100%;
+  width: 20%;
+  padding: 15px;
+  text-align: center;
+  border: 3px solid black;
+  opacity: 1;
+  transition: all .5s ease-in-out;
+}
 
   .topnav{
     background:black;
