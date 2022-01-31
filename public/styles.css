@@ -33,7 +33,6 @@ body {
     box-sizing: border-box;
     display: grid;
     font-family: Russo One;
-    font-size: min(200%, 5vmin);
     margin: 0;
     
   }
@@ -140,7 +139,7 @@ body {
     height: 100%;
     width: 8%;
     text-decoration: none;
-    font-size: 50%;
+    font-size: 100%;
     cursor: pointer;
   
   }
@@ -162,7 +161,7 @@ body {
     color: rgba(255, 255, 255, 0.452);
   }
   #crashTopnav a{
-    font-size: 50%;
+    font-size: 1vw;
   }
  
 
@@ -204,6 +203,7 @@ body {
   display: flex;
   border-color: white;
   border: 10px solid white;
+  font-size: 150%;
 
 }
 #rules{
@@ -225,6 +225,7 @@ body {
   text-align: center;
   border-radius: 0px;
   line-height: 150px;
+  font-size: 100%;
 }
 #launchBox{
   margin-top: 120px;
@@ -261,6 +262,7 @@ body {
   border: 15px;
   padding: 50px;
   margin-left: 10%;
+  font-size: 150%;
 }
 
 #Roadmap{
@@ -274,11 +276,10 @@ body {
   margin: 0%;
   margin-left: 10%;
   margin-bottom: 50px;
-  padding-top: 50px;
+  padding-top: 3%;
   background: #000000;
   border:3px solid rgb(255,234,84);
-  
-  
+  font-size: 150%;
 }
 
 .RoadmapListItem{
@@ -298,13 +299,15 @@ body {
   color: rgb(255,203,59);
   height: 150px;
   float: right;
-  margin-bottom: 0;
+  margin-bottom: 50px;
   margin-right: 10%;
   border-radius: 50px/50px;
   margin-bottom: 50px;
   padding-top: 50px;
   background: #000000;
   border:3px solid rgb(255,203,59);
+  font-size: 200%;
+
   
 
 }
@@ -323,6 +326,8 @@ body {
   padding-top: 50px;
   background: #000000;
   border:3px solid rgb(253,170,42);
+  font-size: 200%;
+
 
 }
 #roadmapItem3{
@@ -340,6 +345,8 @@ body {
   padding-top: 50px;
   background: #000000;
   border:3px solid rgb(255,87,87);
+  font-size: 200%;
+
 
 }
 #roadmapItem4{
@@ -357,6 +364,7 @@ body {
   margin-bottom: 50px;
   background: #000000;
   border:3px solid rgb(253,170,42);
+  font-size: 200%;
 }
 #roadmapItem5{
   width: 60%;
@@ -373,6 +381,7 @@ body {
   padding-top: 50px;
   background: #000000;
   border:3px solid rgb(255,203,59);
+  font-size: 200%;
 
 }
 #roadmapItem6{
@@ -381,7 +390,7 @@ body {
   padding-right: 10px;
   text-align: center;
   color: rgb(255,234,84);
-  height: 200px;
+  height: 150px;
   float: right;
   margin-bottom: 0;
   border-radius: 50px/50px;
@@ -390,6 +399,8 @@ body {
   padding-top: 50px;
   background: #000000;
   border:3px solid rgb(255,234,84);
+  font-size: 200%;
+
 }
 
 #zero{
@@ -404,11 +415,20 @@ body {
   line-height: 150px;
   text-align: center;
 }
-.roadmapKey{
-  color:  white;
-  width: 100px;
+#futurePlans{
+  background: #000000;
+  color: aqua;
+  text-align: center;
+  width: 70%;
+  font-size: 150%;
+  border-radius: 50px/50px;
+  border:3px solid aqua;
+  height: 400px;
+  padding-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow-wrap: break-word;
 }
-
 #team{
   width: 100%;
   height: 1000px;
@@ -436,6 +456,8 @@ body {
   height: 50%;
   margin: 0px;
   text-align: center;
+  font-size: 200%;
+
 }
 #teammember2{
   background: rgb(95,170,251);
@@ -444,6 +466,7 @@ body {
   height: 50%;
   margin: 0px;
   text-align: center;
+  font-size: 200%;
 
 }
 #teammember3{
@@ -452,6 +475,7 @@ body {
   height: 50%;
   margin: 0px;
   text-align: center;
+  font-size: 200%;
 
 }
 #teammember4{
@@ -460,6 +484,7 @@ body {
   height: 50%;
   margin: 0px;
   text-align: center;
+  font-size: 200%;
 
 }
 #crashTitle{
@@ -475,7 +500,7 @@ body {
 }
 #crashDetails{
     width: 100%;
-    height: 900px;
+    height: 700px;
     margin: 0px;
     border-radius: 0px;
     padding-top: 50px;
@@ -483,6 +508,8 @@ body {
     color: white;
     background: rgb(1,31,75); 
     display: flex;
+    font-size: 150%;
+
 }
 #crashDetailText{
   padding: 5%;
@@ -504,7 +531,6 @@ body {
   margin-top: 125px;
   border-radius: 50px / 50px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 #nftPics {
@@ -591,7 +617,7 @@ button.grow_box:hover::after {
   color: black;
   font-family: Russo One;
   border-radius: 10px/10px;
-  font-size: 75%;
+  font-size: 100%;
   height: 60px;
   width: 200px;
   text-align: center;
@@ -614,7 +640,7 @@ button.grow_box:hover::after {
   color: black;
   font-family: Russo One;
   border-radius: 10px/10px;
-  font-size: 75%;
+  font-size: 100%;
   height: 60px;
   line-height: 60px;
   width: 200px;
@@ -632,7 +658,7 @@ button.grow_box:hover::after {
   color: black;
   font-family: Russo One;
   border-radius: 10px/10px;
-  font-size: 75%;
+  font-size: 100%;
   height: 50px;
   line-height: 50px;
   width: 200px;
@@ -683,16 +709,13 @@ button.grow_box:hover::after {
 }
 
 #launchText {
-  font-size: 1em;
+  font-size: 200%;
   float: left;
-  margin-left: -30px;
   list-style-type: none;
-  padding: 1em;
   text-align: center;
   font-family: Russo One;
   color: black; 
   line-height: 50px;
-  padding: 0%;
   padding-right: 30px;
   margin: 0%;
 }
@@ -700,7 +723,7 @@ button.grow_box:hover::after {
 .launchText {
   font-size: 20px;
   float: left;
-  margin-left: 30px;
+  margin-left: 10%px;
   padding-right: 30px;
   list-style-type: none;
   text-align: center;
