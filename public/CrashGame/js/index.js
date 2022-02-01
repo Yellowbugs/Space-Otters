@@ -75,9 +75,9 @@ function playCrash() {
             setTimeout(() => {document.getElementById("error_active").setAttribute("id","error")},5000);}
     }
     if(ottersOwned.length == 0){
-        if (document.getElementById("error2") != null){
-            document.getElementById("error2").setAttribute("id","error_active");
-            setTimeout(() => {document.getElementById("error_active").setAttribute("id","error2")},5000);}
+       if (document.getElementById("error2") != null){
+           document.getElementById("error2").setAttribute("id","error_active");
+           setTimeout(() => {document.getElementById("error_active").setAttribute("id","error2")},5000);}
     }
     $.post('/bet', { id: document.getElementById('otters').value, betAmount: betAmount }, function(data) {
         multiplier = (Math.log(data)/Math.log(1.1))/0.6*1000;
