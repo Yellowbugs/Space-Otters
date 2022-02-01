@@ -6,6 +6,7 @@ images[2] = "Images/37.png";
 images[3] = "Images/47.png";
 images[4] = "Images/72.png";
 images[5] = "Images/83.png";
+images[6] = "Images/39.png";
 storage = window.localStorage;
 
 

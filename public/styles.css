@@ -164,6 +164,9 @@ body {
     font-size: 1vw;
     height: 120px;
   }
+  #crashTopnav {
+    height: 120px;
+  }
  
 
 
@@ -194,6 +197,17 @@ body {
   background: rgb(3,57,108);
   display: flex;
 }
+#prizes{
+  margin-top: 50px;
+  width: 50%;
+  background: #000000;
+  margin-bottom: 0px;
+  text-align: center;
+  color: white;
+  border: white solid 3px;
+  font-size: 120%;
+  padding: 50px;
+}
 #howToPlay{
   height: 500px;
   width: 75%;
@@ -219,14 +233,14 @@ body {
   text-align: center;
 }
 #leaderboardLookupPlaceholder{
-  width: 100%;
-  background: rgb(255,234,84);
-  color: black;
+  width: 75%;
+  background: black;
+  color: rgb(255,234,84);
   height: 150px;
   text-align: center;
-  border-radius: 0px;
-  line-height: 150px;
+  border: 3px solid rgb(255,234,84);
   font-size: 150%;
+  padding-top: 75px;
 }
 #launchBox{
   margin-top: 120px;
